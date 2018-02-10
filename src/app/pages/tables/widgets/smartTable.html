@@ -10,23 +10,26 @@
     <thead>
     <tr class="sortable ">
       <th class="table-id" st-sort="id" st-sort-default="true">#</th>
-      <th st-sort="firstName">First Name</th>
-      <th st-sort="lastName">Last Name</th>
-      <th st-sort="username">Username</th>
-      <th st-sort="email">Email</th>
-      <th st-sort="age">Age</th>
+      <th st-sort="firstName">Sale ID</th>
+      <th st-sort="lastName">Customer Name</th>
+      <th st-sort="username">Total Amount</th>
+      <th st-sort="email">Advance Payment</th>
+      <th st-sort="age">Sale Date</th>
+      <th st-sort="age">Delivery Date</th>
     </tr>
     <tr>
       <th></th>
-      <th><input st-search="firstName" placeholder="Search First Name" class="input-sm form-control search-input"
+      <th><input st-search="firstName" placeholder="Search Sale ID" class="input-sm form-control search-input"
                  type="search"/></th>
-      <th><input st-search="lastName" placeholder="Search Last Name" class="input-sm form-control search-input"
+      <th><input st-search="lastName" placeholder="Search Customer Name" class="input-sm form-control search-input"
                  type="search"/></th>
-      <th><input st-search="username" placeholder="Search Username" class="input-sm form-control search-input"
+      <th><input st-search="username" placeholder="Search Total Amount" class="input-sm form-control search-input"
                  type="search"/></th>
-      <th><input st-search="email" placeholder="Search Email" class="input-sm form-control search-input" type="search"/>
+      <th><input st-search="email" placeholder="Search Advance Payment" class="input-sm form-control search-input" type="search"/>
       </th>
-      <th><input st-search="age" placeholder="Search Age" class="input-sm form-control search-input" type="search"/>
+      <th><input st-search="age" placeholder="Search Sale Date" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="age" placeholder="Search Delivery Date" class="input-sm form-control search-input" type="search"/>
       </th>
     </tr>
     </thead>
@@ -38,6 +41,7 @@
       <td>{{item.username}}</td>
       <td><a class="email-link" ng-href="mailto:{{item.email}}">{{item.email}}</a></td>
       <td>{{item.age}}</td>
+      <td>{{item.date}}</td>
     </tr>
     </tbody>
     <tfoot>
