@@ -5,21 +5,21 @@
 (function () {
     'use strict';
 
-    angular.module('BlurAdmin.pages.createProduct', [
-    ])
+    angular.module('BlurAdmin.pages.createProduct', [])
         .config(routeConfig);
 
     /** @ngInject */
     function routeConfig($stateProvider) {
         $stateProvider
-            .state('createProduct', {
-                url: '/createProduct.html',
-                template : '<ui-view  autoscroll="true" autoscroll-body-top></ui-view>',
-                abstract: true,
+            .state(
+                'createProduct', {
+                url: '/createProduct',
+                templateUrl : 'app/pages/form/layouts/widgets/createProduct.html',
                 title: 'Create Product',
+                controller:'createProductController',
                 sidebarMeta: {
                     icon: 'ion-gear-a',
-                    order: 100
+                    order: 200
                 },
             });
     }

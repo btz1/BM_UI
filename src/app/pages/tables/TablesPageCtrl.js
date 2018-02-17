@@ -13,7 +13,7 @@
 
     $scope.smartTablePageSize = 10;
 
-    $scope.smartTableData = [{
+    $scope.smartTableData = [/*{
         id: 1,
         firstName: '123',
         lastName: 'Tanzeel',
@@ -32,7 +32,7 @@
             age: '08-02-2018',
             date: '20-02-2018'
 
-        }
+        }*/
 
     ];
 

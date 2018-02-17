@@ -9,7 +9,9 @@
     'ui.router',
 
     'BlurAdmin.pages.dashboard',
-    'BlurAdmin.pages.createProduct.html',
+    'BlurAdmin.pages.createProduct',
+    'BlurAdmin.pages.createCustomer',
+    'BlurAdmin.pages.createEmployee',
     'BlurAdmin.pages.ui',
     'BlurAdmin.pages.components',
     'BlurAdmin.pages.form',
