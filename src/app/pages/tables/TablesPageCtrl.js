@@ -9,11 +9,16 @@
       .controller('TablesPageCtrl', TablesPageCtrl);
 
   /** @ngInject */
-  function TablesPageCtrl($scope, $filter, editableOptions, editableThemes) {
+  function TablesPageCtrl($scope, $filter, editableOptions, editableThemes,$http) {
 
-    $scope.smartTablePageSize = 10;
+      $http.get("http://localhost:8080/getAllProducts")
+          .then(function(response){
+              $scope.smartTablePageSize = 4;
+              $scope.smartTableData = response.data;
+          });
+    /*$scope.smartTablePageSize = 10;
 
-    $scope.smartTableData = [/*{
+    $scope.smartTableData = [{
         id: 1,
         firstName: '123',
         lastName: 'Tanzeel',
@@ -32,9 +37,9 @@
             age: '08-02-2018',
             date: '20-02-2018'
 
-        }*/
+        }
 
-    ];
+    ];*/
 
     // $scope.editableTableData = $scope.smartTableData.slice(0, 36);
 
