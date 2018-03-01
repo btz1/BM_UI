@@ -28,13 +28,20 @@
           sidebarMeta: {
             order: 0,
           },
-        }).state('tables.smart', {
-          url: '/smart',
+        }).state('tables.products', {
+          url: '/allProducts',
           templateUrl: 'app/pages/tables/smart/tables.html',
-          title: 'Smart Tables',
+          title: 'List Products',
           sidebarMeta: {
             order: 100,
           },
+        }).state('tables.customers', {
+        url: '/allCustomers',
+        templateUrl: 'app/pages/tables/smart/tables.html',
+        title: 'List All Customers',
+        sidebarMeta: {
+            order: 100,
+        },
         });
     $urlRouterProvider.when('/tables','/tables/basic');
   }

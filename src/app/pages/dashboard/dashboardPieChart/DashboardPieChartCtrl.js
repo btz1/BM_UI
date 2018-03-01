@@ -9,32 +9,42 @@
       .controller('DashboardPieChartCtrl', DashboardPieChartCtrl);
 
   /** @ngInject */
-  function DashboardPieChartCtrl($scope, $timeout, baConfig, baUtil) {
+  function DashboardPieChartCtrl($scope, $timeout, baConfig, baUtil,dashBoardService) {
+
+    $scope.pieChartData={};
+
+    function loadPieChartData() {
+        dashBoardService.getStats().then(function (response) {
+            $scope.pieChartData = response;
+        });
+    }
+
+    loadPieChartData();
+
     var pieColor = baUtil.hexToRGB(baConfig.colors.defaultText, 0.2);
+    console.log($scope.pieChartData);
     $scope.charts = [{
       color: pieColor,
-      description: 'New Visits',
-      stats: '57,820',
-      icon: 'person',
+      description: 'Sales',
+      // stats: $scope.pieChartData.saleCount,
+        stats: 10,
     }, {
       color: pieColor,
-      description: 'Purchases',
-      stats: '$ 89,745',
-      icon: 'money',
+      description: 'Delivered',
+      // stats: $scope.pieChartData.deliveredCount,
+        stats: 6,
     }, {
       color: pieColor,
-      description: 'Active Users',
-      stats: '178,391',
-      icon: 'face',
+      description: 'Pending',
+      stats: 3,
     }, {
       color: pieColor,
       description: 'Returned',
-      stats: '32,592',
-      icon: 'refresh',
+      stats: 1,
     }
     ];
 
-    function getRandomArbitrary(min, max) {
+   /* function getRandomArbitrary(min, max) {
       return Math.random() * (max - min) + min;
     }
 
@@ -44,7 +54,7 @@
         chart.easyPieChart({
           easing: 'easeOutBounce',
           onStep: function (from, to, percent) {
-            $(this.el).find('.percent').text(Math.round(percent));
+            $(this.el).find('.percent').text(Math.round(100));
           },
           barColor: chart.attr('rel'),
           trackColor: 'rgba(0,0,0,0)',
@@ -70,6 +80,6 @@
     $timeout(function () {
       loadPieCharts();
       updatePieCharts();
-    }, 1000);
+    }, 1000);*/
   }
 })();

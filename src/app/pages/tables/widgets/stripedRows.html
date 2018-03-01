@@ -1,7 +1,7 @@
 <div class="vertical-scroll">
   <table class="table table-striped">
     <thead>
-    <tr>
+    <tr ng-if="pageName ==='tables.products'">
       <th class="table-id">#</th>
       <th>Sale ID</th>
       <th>Customer Name</th>
@@ -12,7 +12,7 @@
       <th>Date of Sale</th>
     </tr>
     </thead>
-    <tbody>
+    <tbody ng-if="pageName ==='tables.products'">
     <tr ng-repeat="item in smartTableData">
       <td class="table-id">{{item.id}}</td>
       <td>{{item.id}}</td>
