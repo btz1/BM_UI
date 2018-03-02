@@ -1,0 +1,54 @@
+<div class="horizontal-scroll" ng-init="loadCustomers()">
+    <!-- <div class="form-group select-page-size-wrap ">
+       <label>Rows on page
+         <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
+                 ng-model="smartTablePageSize" ng-options="i for i in [5,10,15,20,25]">
+         </select>
+       </label>
+     </div>-->
+    <table class="table" >
+        <thead>
+        <tr class="sortable ">
+            <th>Customer ID</th>
+            <th>Customer First Name</th>
+            <th>Customer Last Name</th>
+            <th>Customer Email </th>
+            <th>Customer Address </th>
+            <th>Customer City </th>
+            <th>Customer Phone </th>
+        </tr>
+        <!-- <tr>
+              <th></th>
+              <th><input st-search="id" placeholder="Search Sale ID" class="input-sm form-control search-input"
+                         type="search"/></th>
+              <th><input st-search="name" placeholder="Search Customer Name" class="input-sm form-control search-input"
+                         type="search"/></th>
+              <th><input st-search="price" placeholder="Search Total Amount" class="input-sm form-control search-input"
+                         type="search"/></th>
+              <th><input st-search="productCode" placeholder="Search Advance Payment" class="input-sm form-control search-input" type="search"/>
+              </th>
+              <th><input st-search="unit" placeholder="Search Sale Date" class="input-sm form-control search-input" type="search"/>
+              </th>
+              <th><input st-search="updatedOn" placeholder="Search Delivery Date" class="input-sm form-control search-input" type="search"/>
+              </th>
+         </tr>-->
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in customersData">
+            <td>{{item.id}}</td>
+            <td>{{item.firstName}}</td>
+            <td>{{item.lastName}}</td>
+            <!--<td><a class="email-link" ng-href="mailto:{{item.email}}">{{item.email}}</a></td>-->
+            <td>{{item.email}}</td>
+            <td>{{item.address1}}{{item.address2}}</td>
+            <td>{{item.city}}</td>
+            <td>{{item.phoneNumber}}</td>
+
+        </tr>
+        </tbody>
+        <tfoot>
+        </tfoot>
+    </table>
+
+
+</div>
