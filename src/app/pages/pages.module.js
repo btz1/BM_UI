@@ -15,6 +15,7 @@
     'BlurAdmin.pages.FFInvoice',
     'BlurAdmin.pages.ListEmployee',
       'BlurAdmin.pages.ListCustomer',
+    'BlurAdmin.pages.SalesList',
     // 'BlurAdmin.pages.listAllCustomers',
     // 'BlurAdmin.pages.ui',
     // 'BlurAdmin.pages.components',

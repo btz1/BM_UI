@@ -1,4 +1,4 @@
-<div class="vertical-scroll">
+<div>
     <section class="row" ng-controller="FFInvoiceController">
         <table class="table table-hover">
             <thead>
@@ -53,9 +53,11 @@
                 <td style="border:1px solid black;padding: 10px;">{{total()}}</td>
             </tr>
             </tbody>
-            <button type="button" class="btn btn-primary" ng-click="add()">Add item</button>
+
         </table>
+        <button type="button" class="btn btn-primary" ng-click="add()">Add item</button>&nbsp;&nbsp;&nbsp;
+        <button ng-click="printInvoice('printSection1')" class="btn btn-primary">Print</button>
     </section>
 
-    <button ng-click="printInvoice('printSection1')" class="btn btn-primary">Print</button>
+
 </div>
