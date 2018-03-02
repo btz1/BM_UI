@@ -12,6 +12,12 @@
   overflow-y: visible;
 }
 
+
+.vertical-scroll {
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
 .panel-subtitle {
   font-size: 15px;
   margin-bottom: 16px;
