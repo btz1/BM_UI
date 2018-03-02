@@ -1,0 +1,57 @@
+<div class="horizontal-scroll" ng-init="loadEmployees()">
+    <!-- <div class="form-group select-page-size-wrap ">
+       <label>Rows on page
+         <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
+                 ng-model="smartTablePageSize" ng-options="i for i in [5,10,15,20,25]">
+         </select>
+       </label>
+     </div>-->
+    <table class="table" >
+        <thead>
+        <tr class="sortable ">
+            <th>Employee ID</th>
+            <th>Employee Name</th>
+            <th>Employee Phone</th>
+            <th>Employee salary Per Day </th>
+            <th>Employee Address </th>
+            <th>Employee Joining Date </th>
+            <th>Employee Over Time Rate </th>
+            <th>Employee salary Per Month </th>
+        </tr>
+       <!-- <tr>
+             <th></th>
+             <th><input st-search="id" placeholder="Search Sale ID" class="input-sm form-control search-input"
+                        type="search"/></th>
+             <th><input st-search="name" placeholder="Search Customer Name" class="input-sm form-control search-input"
+                        type="search"/></th>
+             <th><input st-search="price" placeholder="Search Total Amount" class="input-sm form-control search-input"
+                        type="search"/></th>
+             <th><input st-search="productCode" placeholder="Search Advance Payment" class="input-sm form-control search-input" type="search"/>
+             </th>
+             <th><input st-search="unit" placeholder="Search Sale Date" class="input-sm form-control search-input" type="search"/>
+             </th>
+             <th><input st-search="updatedOn" placeholder="Search Delivery Date" class="input-sm form-control search-input" type="search"/>
+             </th>
+        </tr>-->
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in employeeData">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.phone}}</td>
+            <!--<td><a class="email-link" ng-href="mailto:{{item.email}}">{{item.email}}</a></td>-->
+            <td>{{item.perDaySalary}}</td>
+            <td>{{item.address}}</td>
+            <td>{{item.joinDate}}</td>
+            <td>{{item.overTimeRate}}</td>
+            <td>{{item.perMonthSalary}}</td>
+
+
+        </tr>
+        </tbody>
+        <tfoot>
+        </tfoot>
+    </table>
+
+
+</div>

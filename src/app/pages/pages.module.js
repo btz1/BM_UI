@@ -13,6 +13,8 @@
     'BlurAdmin.pages.createCustomer',
     'BlurAdmin.pages.createEmployee',
     'BlurAdmin.pages.FFInvoice',
+    'BlurAdmin.pages.ListEmployee',
+      'BlurAdmin.pages.ListCustomer',
     // 'BlurAdmin.pages.listAllCustomers',
     // 'BlurAdmin.pages.ui',
     // 'BlurAdmin.pages.components',
