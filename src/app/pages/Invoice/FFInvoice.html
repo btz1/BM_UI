@@ -3,20 +3,29 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Qty</th>
-                <th>Price</th>
-                <th>Total</th>
+                <th>Select Customer</th>
+                <th>Select Product</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Item Total</th>
                 <th>Delete</th>
             </tr>
             </thead>
-            <tbody>
-            <tr ng-repeat="item in invoice.items" name="printCol">
-                <td><input type="text" value="item.name" ng-model="item.name" class="form-control" /></td>
-                <td><input type="text" ng-model="item.description" class="form-control" /></td>
-                <td><input type="number" ng-model="item.qty" class="form-control" /></td>
+            <tbody id="printSection2">
+            <tr ng-repeat="item in invoice.items">
+                <td>
+                    <select ng-model="selected" ng-options="option.firstName for option in item.customerList" class="form-control" ng-change="populateSelectedProduct(selected,item)">
+                        <option value="">Select customer</option>
+                    </select>
+                </td>
+
+                <td>
+                    <select ng-model="selected" ng-options="option.name for option in item.productList" class="form-control" ng-change="populateSelectedProduct(selected,item)">
+                        <option value="">Select product</option>
+                    </select>
+                </td>
                 <td><input type="number" ng-model="item.price" class="form-control" /></td>
+                <td><input type="number" ng-model="item.qty" class="form-control" /></td>
                 <td>{{item.qty * item.price}}</td>
                 <td><button type="button" class="btn btn-danger" ng-click="remove($index)">Delete</button></td>
             </tr>
@@ -29,12 +38,12 @@
             </tbody>
 
             <tbody id="printSection1" ng-show="false">
-            <tr ng-repeat="item in invoice.items" name="printCol">
-                <td name="printCol" ng-show="false" style="border:1px solid black;padding: 10px;">{{item.name}}</td>
-                <td name="printCol" ng-show="false" style="border:1px solid black;padding: 10px;">{{item.description}}</td>
-                <td name="printCol" ng-show="false" style="border:1px solid black;padding: 10px;">{{item.qty}}</td>
-                <td name="printCol" ng-show="false" style="border:1px solid black;padding: 10px;">{{item.price}}</td>
-                <td name="printCol" ng-show="false" style="border:1px solid black;padding: 10px;">{{item.qty * item.price}}</td>
+            <tr ng-repeat="item in invoice.items" >
+                <td  ng-show="false" style="border:1px solid black;padding: 10px;">{{item.selectedProduct}}</td>
+                <td  ng-show="false" style="border:1px solid black;padding: 10px;">{{item.description}}</td>
+                <td  ng-show="false" style="border:1px solid black;padding: 10px;">{{item.qty}}</td>
+                <td  ng-show="false" style="border:1px solid black;padding: 10px;">{{item.price}}</td>
+                <td  ng-show="false" style="border:1px solid black;padding: 10px;">{{item.qty * item.price}}</td>
             </tr>
             <tr>
                 <td style="border:1px solid black;padding: 10px;"></td>
@@ -48,5 +57,5 @@
         </table>
     </section>
 
-    <button ng-click="printToCart('printSection1')" class="btn btn-primary">Print</button>
+    <button ng-click="printInvoice('printSection1')" class="btn btn-primary">Print</button>
 </div>

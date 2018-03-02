@@ -9,27 +9,59 @@
         .controller('FFInvoiceController', FFInvoiceController);
 
     /** @ngInject */
-    function FFInvoiceController ($scope,$http,$timeout)
+    function FFInvoiceController ($scope,$http,productDataService,customerDataService)
     {
+
+        $scope.allProducts = [];
+        $scope.allCustomers = [];
+
+        $scope.getAllProducts = function () {
+            var promise = productDataService.getAllProducts();
+
+            promise.then(function (response) {
+                $scope.allProducts = response;
+                console.log($scope.allProducts);
+            });
+        };
+        $scope.getAllProducts();
+
+
+        $scope.getAllCustomers = function () {
+            var promise = customerDataService.getAllCustomers();
+
+            promise.then(function (response) {
+                $scope.allCustomers = response;
+                console.log($scope.allCustomers);
+            });
+        };
+        $scope.getAllCustomers();
+
+
+        $scope.populateSelectedProduct = function (selected,item) {
+            item.selectedProduct = selected;
+            console.log(item.selectedProduct);
+        };
+
+
         $scope.invoice = {
             items: [{
-                name: 'item',
-                description: 'item description',
-                qty: 5,
-                price: 5.5
-            },{
-                name: 'item',
-                description: 'item description',
-                qty: 5,
-                price: 7.5
+                productList: $scope.allProducts,
+                customerList:$scope.allCustomers,
+                selectedProduct:"",
+                selectedCustomer:"",
+                qty: 1,
+                price: ""
             }]
         };
+        console.log($scope.invoice);
         $scope.add = function(){
             $scope.invoice.items.push({
-                name: '',
-                description: '',
+                productList: $scope.allProducts,
+                customerList:$scope.allCustomers,
+                selectedProduct:"",
+                selectedCustomer:"",
                 qty: 1,
-                price: 0
+                price: ""
             });
         },
         $scope.remove = function(index){
@@ -50,8 +82,9 @@
         $scope.itemTotal="";
 
 
-        $scope.printToCart = function(printSectionId) {
+        $scope.printInvoice = function(printSectionId) {
             var innerContents = document.getElementById(printSectionId).innerHTML;
+            var innerContents1 = document.getElementById("printSection2").innerHTML;
             var popupWinindow = window.open('', '_blank', 'width=4000,height=4000,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
             popupWinindow.document.open();
             popupWinindow.document.write('<html><head><link rel="stylesheet" type="text/css" href="style.css" />' +
@@ -59,11 +92,11 @@
                 '<img src="../../../assets/img/header.jpg" width="100%" height="250px" /><br/><br/><br/> ' +
                 '<table class="table table-hover" style="border:1px solid black;width: 100%"> ' +
                 '<thead> <tr> ' +
-                '<th style="border:1px solid black;padding: 10px;">Name</th> ' +
-                '<th style="border:1px solid black;padding: 10px;">Description</th> ' +
-                '<th style="border:1px solid black;padding: 10px;">Qty</th> ' +
-                '<th style="border:1px solid black;padding: 10px;">Price</th> ' +
-                '<th style="border:1px solid black;padding: 10px;">Total</th> ' +
+                '<th style="border:1px solid black;padding: 10px;">Customer</th> ' +
+                '<th style="border:1px solid black;padding: 10px;">Product</th> ' +
+                '<th style="border:1px solid black;padding: 10px;">Unit Price</th> ' +
+                '<th style="border:1px solid black;padding: 10px;">Quantity</th> ' +
+                '<th style="border:1px solid black;padding: 10px;">Item Total</th> ' +
                 '</tr> </thead>' + innerContents + ' </table> ' +
                 '<br/><br/> <img src="../../../assets/img/footer.jpg" width="100%" height="100px" /> </div> </section> </html>');
             popupWinindow.document.close();
