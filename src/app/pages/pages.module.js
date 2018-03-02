@@ -12,12 +12,13 @@
     'BlurAdmin.pages.createProduct',
     'BlurAdmin.pages.createCustomer',
     'BlurAdmin.pages.createEmployee',
-    'BlurAdmin.pages.ui',
-    'BlurAdmin.pages.components',
+    // 'BlurAdmin.pages.listAllCustomers',
+    // 'BlurAdmin.pages.ui',
+    // 'BlurAdmin.pages.components',
     'BlurAdmin.pages.form',
     'BlurAdmin.pages.tables',
-    'BlurAdmin.pages.charts',
-    'BlurAdmin.pages.maps',
+    // 'BlurAdmin.pages.charts',
+    // 'BlurAdmin.pages.maps',
     'BlurAdmin.pages.profile',
   ])
       .config(routeConfig);
@@ -26,7 +27,7 @@
   function routeConfig($urlRouterProvider, baSidebarServiceProvider) {
     $urlRouterProvider.otherwise('/dashboard');
 
-    baSidebarServiceProvider.addStaticItem({
+    /*baSidebarServiceProvider.addStaticItem({
       title: 'Pages',
       icon: 'ion-document',
       subMenu: [{
@@ -45,8 +46,8 @@
         fixedHref: '404.html',
         blank: true
       }]
-    });
-    baSidebarServiceProvider.addStaticItem({
+    });*/
+    /*baSidebarServiceProvider.addStaticItem({
       title: 'Menu Level 1',
       icon: 'ion-ios-more',
       subMenu: [{
@@ -59,7 +60,7 @@
           disabled: true
         }]
       }]
-    });
+    });*/
   }
 
 })();
