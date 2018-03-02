@@ -12,37 +12,56 @@
   function DashboardPieChartCtrl($scope, $timeout, baConfig, baUtil,dashBoardService) {
 
     $scope.pieChartData={};
+    $scope.statTest = {};
 
-    function loadPieChartData() {
+    $scope.loadPieChartData = function () {
+      var getStatsResp = dashBoardService.getStats();
+
+        getStatsResp.then(function (response) {
+            $scope.statTest = response;
+            $scope.populatePieChart();
+        });
+    };
+
+      $scope.loadPieChartData();
+
+/*    /!*function loadPieChartData() {
         dashBoardService.getStats().then(function (response) {
             $scope.pieChartData = response;
         });
-    }
+    }*!/
 
-    loadPieChartData();
+    // loadPieChartData();*/
 
-    var pieColor = baUtil.hexToRGB(baConfig.colors.defaultText, 0.2);
-    console.log($scope.pieChartData);
-    $scope.charts = [{
-      color: pieColor,
-      description: 'Sales',
-      // stats: $scope.pieChartData.saleCount,
-        stats: 10,
-    }, {
-      color: pieColor,
-      description: 'Delivered',
-      // stats: $scope.pieChartData.deliveredCount,
-        stats: 6,
-    }, {
-      color: pieColor,
-      description: 'Pending',
-      stats: 3,
-    }, {
-      color: pieColor,
-      description: 'Returned',
-      stats: 1,
-    }
-    ];
+      $scope.populatePieChartData = function () {
+
+      };
+
+      $scope.populatePieChart = function () {
+          var pieColor = baUtil.hexToRGB(baConfig.colors.defaultText, 0.2);
+          console.log($scope.statTest);
+          $scope.charts = [{
+              color: pieColor,
+              description: 'Sales',
+              stats: $scope.statTest.saleCount,
+              // stats: 10,
+          }, {
+              color: pieColor,
+              description: 'Delivered',
+              stats: $scope.statTest.deliveredCount,
+              // stats: 6,
+          }, {
+              color: pieColor,
+              description: 'Pending',
+              stats: 3,
+          }, {
+              color: pieColor,
+              description: 'Returned',
+              stats: 1,
+          }
+          ];
+      };
+
 
    /* function getRandomArbitrary(min, max) {
       return Math.random() * (max - min) + min;

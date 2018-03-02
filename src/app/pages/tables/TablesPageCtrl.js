@@ -5,21 +5,44 @@
 (function () {
     'use strict';
 
-    angular.module('BlurAdmin.pages.tables')
+    angular.module('BlurAdmin')
         .controller('TablesPageCtrl', TablesPageCtrl);
 
     /** @ngInject */
-    function TablesPageCtrl($scope, $filter, editableOptions, editableThemes,$http,tableDataService,$state) {
+    function TablesPageCtrl($scope, $filter, editableOptions, editableThemes,$http,tableDataService,$state,$interval) {
 
         $scope.pageName = $state.current.name;
+        $scope.smartTableData = 0;
+        $scope.testData = [];
+        $scope.test = 0;
+        $scope.tableDataResponseHolder = {};
 
-        function loadData() {
-            tableDataService.getProductTableData().then(function (response) {
-                // added dummy timeout to simulate delay
-                $scope.smartTableData = response;
+        $scope.loadData = function () {
+            var responsePromise = tableDataService.getProductTableData();
+
+            responsePromise.then(function (response) {
+                $scope.testData = response;
                 $scope.smartTablePageSize = response.length;
             });
         };
+        $scope.loadData();
+
+        $interval(function() {
+            $scope.smartTableData++;
+        }, 500);
+
+        $scope.reloadScope =function () {
+            $scope.smartTableData = "kfjgfsdjhgj";
+            console.log("reloaded");
+        };
+
+/*
+        $scope.$watch('tableDataResponseHolder', function() {
+                //any code in here will automatically have an apply run afterwards
+                $scope.smartTableData = $scope.tableDataResponseHolder;
+                $scope.smartTablePageSize = $scope.tableDataResponseHolder.length;
+        });
+*/
 
         $scope.statuses = [
             {value: 1, text: 'Good'},
@@ -64,8 +87,6 @@
             $scope.users.push($scope.inserted);
         };
 
-        loadData();
-        console.log($scope.smartTableData);
         editableOptions.theme = 'bs3';
         editableThemes['bs3'].submitTpl = '<button type="submit" class="btn btn-primary btn-with-icon"><i class="ion-checkmark-round"></i></button>';
         editableThemes['bs3'].cancelTpl = '<button type="button" ng-click="$form.$cancel()" class="btn btn-default btn-with-icon"><i class="ion-close-round"></i></button>';
