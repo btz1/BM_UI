@@ -8,7 +8,7 @@
          </select>
        </label>
      </div>-->
-    <table class="table" id = "test" >
+    <table class="table" >
         <thead>
         <tr class="sortable ">
             <th>Sales Id</th>
@@ -34,7 +34,7 @@
          </tr>-->
         </thead>
         <tbody>
-        <tr ng-repeat="item in SalesData | filter: searchSales" >
+        <tr ng-repeat="item in SalesData">
             <td>{{item.salesId}}</td>
             <td>{{item.saleDate}}</td>
             <td>{{item.deliverDate}}</td>
