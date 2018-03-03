@@ -14,6 +14,7 @@
 
         $scope.allProducts = [];
         $scope.allCustomers = [];
+        $scope.customerfirstName = "";
 
         $scope.getAllProducts = function () {
             var promise1 = productDataService.getAllProducts();
@@ -44,6 +45,7 @@
 
         $scope.populateSelectedCustomer = function (selected,item) {
             item.selectedCustomer = selected.firstName;
+            $scope.customerfirstName = selected.firstName;
         };
 
 
