@@ -29,7 +29,7 @@
                 </td>
 
                 <td>
-                    <select ng-model="selectedProduct" ng-options="option.name for option in item.productList" class="form-control"
+                    <select ng-model="selectedProduct" ng-options="option.urduName for option in item.productList" class="form-control"
                             ng-change="populateSelectedProduct(selectedProduct,item)">
                         <option value="">Select product</option>
                     </select>

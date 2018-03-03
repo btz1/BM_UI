@@ -9,8 +9,19 @@
                 return response.data
             });
         };
+
+        var getAllCustomersSummary = function() {
+            return $http({
+                url: "http://localhost:8080/getAllCustomersSummary",
+                method: "GET"
+            }).then(function(response) {
+                return response.data
+            });
+        };
+
         return {
-            getAllCustomers: getAllCustomers
+            getAllCustomers: getAllCustomers,
+            getAllCustomersSummary: getAllCustomersSummary
         };
     };
 

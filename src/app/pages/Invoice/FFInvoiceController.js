@@ -18,7 +18,7 @@
 
         $scope.getAllProducts = function () {
             var promise1 = productDataService.getAllProducts();
-            var promise2 = customerDataService.getAllCustomers();
+            var promise2 = customerDataService.getAllCustomersSummary();
 
             $q.all([promise1, promise2]).then(function(response){
                 $scope.allProducts = response[0];
@@ -39,7 +39,7 @@
         $scope.getAllProducts();
 
         $scope.populateSelectedProduct = function (selected,item) {
-            item.selectedProduct = selected.name;
+            item.selectedProduct = selected.urduName;
             item.price = selected.price;
         };
 
