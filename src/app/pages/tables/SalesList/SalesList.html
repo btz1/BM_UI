@@ -34,7 +34,7 @@
          </tr>-->
         </thead>
         <tbody>
-        <tr ng-repeat="item in SalesData">
+        <tr ng-repeat="item in SalesData |filter :searchSales">
             <td>{{item.salesId}}</td>
             <td>{{item.saleDate}}</td>
             <td>{{item.deliverDate}}</td>
