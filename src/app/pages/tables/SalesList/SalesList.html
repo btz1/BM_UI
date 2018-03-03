@@ -1,4 +1,6 @@
-<div class="horizontal-scroll" ng-init="loadSalesData()">
+<div class="horizontal-scroll" ng-init="loadSalesData()" ba-panel ba-panel-class="with-scroll">
+    <input type="text" ng-model="searchSales" placeholder="Search here" class="form-control">
+
     <!-- <div class="form-group select-page-size-wrap ">
        <label>Rows on page
          <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
@@ -6,7 +8,7 @@
          </select>
        </label>
      </div>-->
-    <table class="table" >
+    <table class="table" id = "test" >
         <thead>
         <tr class="sortable ">
             <th>Sales Id</th>
@@ -15,7 +17,7 @@
             <th>Sales Total Amount </th>
             <th>Sales Advance Payment </th>
         </tr>
-        <!-- <tr>
+         <!--<tr>
               <th></th>
               <th><input st-search="id" placeholder="Search Sale ID" class="input-sm form-control search-input"
                          type="search"/></th>
@@ -32,7 +34,7 @@
          </tr>-->
         </thead>
         <tbody>
-        <tr ng-repeat="item in SalesData">
+        <tr ng-repeat="item in SalesData | filter: searchSales" >
             <td>{{item.salesId}}</td>
             <td>{{item.saleDate}}</td>
             <td>{{item.deliverDate}}</td>

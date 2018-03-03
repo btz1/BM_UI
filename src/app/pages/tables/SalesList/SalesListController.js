@@ -14,6 +14,8 @@
 
         $scope.loadSalesData = function () {
 
+
+
             $http({
                 url: "http://localhost:8080/getAllSales",
                 method: "get",

@@ -1,4 +1,5 @@
-<div class="horizontal-scroll" ng-init="loadCustomers()">
+<div class="horizontal-scroll" ng-init="loadCustomers()" ba-panel ba-panel-class="with-scroll">
+    <input type="text" ng-model="searchCustomer" placeholder="Search here" class="form-control">
     <!-- <div class="form-group select-page-size-wrap ">
        <label>Rows on page
          <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
@@ -34,7 +35,7 @@
          </tr>-->
         </thead>
         <tbody>
-        <tr ng-repeat="item in customersData">
+        <tr ng-repeat="item in customersData | filter: searchCustomer">
             <td>{{item.id}}</td>
             <td>{{item.firstName}}</td>
             <td>{{item.lastName}}</td>
