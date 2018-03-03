@@ -9,50 +9,45 @@
         .controller('FFInvoiceController', FFInvoiceController);
 
     /** @ngInject */
-    function FFInvoiceController ($scope,$http,productDataService,customerDataService)
+    function FFInvoiceController ($scope,$http,productDataService,customerDataService,$q)
     {
 
         $scope.allProducts = [];
         $scope.allCustomers = [];
 
         $scope.getAllProducts = function () {
-            var promise = productDataService.getAllProducts();
+            var promise1 = productDataService.getAllProducts();
+            var promise2 = customerDataService.getAllCustomers();
 
-            promise.then(function (response) {
-                $scope.allProducts = response;
-                console.log($scope.allProducts);
+            $q.all([promise1, promise2]).then(function(response){
+                $scope.allProducts = response[0];
+                $scope.allCustomers = response[1];
+
+                $scope.invoice = {
+                    items: [{
+                        productList: $scope.allProducts,
+                        customerList:$scope.allCustomers,
+                        selectedProduct:"",
+                        selectedCustomer:"",
+                        qty: 1,
+                        price: ""
+                    }]
+                };
             });
         };
         $scope.getAllProducts();
 
-
-        $scope.getAllCustomers = function () {
-            var promise = customerDataService.getAllCustomers();
-
-            promise.then(function (response) {
-                $scope.allCustomers = response;
-                console.log($scope.allCustomers);
-            });
-        };
-        $scope.getAllCustomers();
-
-
         $scope.populateSelectedProduct = function (selected,item) {
-            item.selectedProduct = selected;
-            console.log(item.selectedProduct);
+            item.selectedProduct = selected.name;
+            item.price = selected.price;
+        };
+
+        $scope.populateSelectedCustomer = function (selected,item) {
+            item.selectedCustomer = selected.firstName;
         };
 
 
-        $scope.invoice = {
-            items: [{
-                productList: $scope.allProducts,
-                customerList:$scope.allCustomers,
-                selectedProduct:"",
-                selectedCustomer:"",
-                qty: 1,
-                price: ""
-            }]
-        };
+
         console.log($scope.invoice);
         $scope.add = function(){
             $scope.invoice.items.push({

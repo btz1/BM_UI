@@ -1,4 +1,4 @@
-<div class="horizontal-scroll" ng-init="loadSalesData()">
+<div class="horizontal-scroll" ng-init="loadSalesData()" ba-panel ba-panel-class="with-scroll">
     <!-- <div class="form-group select-page-size-wrap ">
        <label>Rows on page
          <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
@@ -32,11 +32,11 @@
          </tr>-->
         </thead>
         <tbody>
-        <tr ng-repeat="item in SalesData">
+
+        <tr ng-repeat="item in SalesData" data-toggle="collapse" href="#test">
             <td>{{item.salesId}}</td>
             <td>{{item.saleDate}}</td>
             <td>{{item.deliverDate}}</td>
-            <!--<td><a class="email-link" ng-href="mailto:{{item.email}}">{{item.email}}</a></td>-->
             <td>{{item.totalAmount}}</td>
             <td>{{item.advancePayment}}</td>
 
@@ -46,5 +46,5 @@
         </tfoot>
     </table>
 
-
+    <div id="test" class="collapse in"><p>fsjdfhgsdjfsdfhgfhsdgfhsdgfhsdgjhfggfgfhsdgfhsdgfsdhgfhsdgfjhsdgfhsdghsdgfhsg</p></div>
 </div>

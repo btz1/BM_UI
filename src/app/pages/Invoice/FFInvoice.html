@@ -14,13 +14,15 @@
             <tbody id="printSection2">
             <tr ng-repeat="item in invoice.items">
                 <td>
-                    <select ng-model="selected" ng-options="option.firstName for option in item.customerList" class="form-control" ng-change="populateSelectedProduct(selected,item)">
+                    <select ng-model="selectedCustomer" ng-options="option.firstName for option in item.customerList"
+                            class="form-control" ng-change="populateSelectedCustomer(selectedCustomer,item)">
                         <option value="">Select customer</option>
                     </select>
                 </td>
 
                 <td>
-                    <select ng-model="selected" ng-options="option.name for option in item.productList" class="form-control" ng-change="populateSelectedProduct(selected,item)">
+                    <select ng-model="selectedProduct" ng-options="option.name for option in item.productList" class="form-control"
+                            ng-change="populateSelectedProduct(selectedProduct,item)">
                         <option value="">Select product</option>
                     </select>
                 </td>
@@ -39,10 +41,10 @@
 
             <tbody id="printSection1" ng-show="false">
             <tr ng-repeat="item in invoice.items" >
+                <td  ng-show="false" style="border:1px solid black;padding: 10px;">{{item.selectedCustomer}}</td>
                 <td  ng-show="false" style="border:1px solid black;padding: 10px;">{{item.selectedProduct}}</td>
-                <td  ng-show="false" style="border:1px solid black;padding: 10px;">{{item.description}}</td>
-                <td  ng-show="false" style="border:1px solid black;padding: 10px;">{{item.qty}}</td>
                 <td  ng-show="false" style="border:1px solid black;padding: 10px;">{{item.price}}</td>
+                <td  ng-show="false" style="border:1px solid black;padding: 10px;">{{item.qty}}</td>
                 <td  ng-show="false" style="border:1px solid black;padding: 10px;">{{item.qty * item.price}}</td>
             </tr>
             <tr>
