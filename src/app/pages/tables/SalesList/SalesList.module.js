@@ -18,7 +18,7 @@
                     title: 'Sales List',
                     controller:'SalesListController',
                     sidebarMeta: {
-                        icon: 'ion-gear-a',
+                        icon: 'ion-grid',
                         order: 200
                     },
                 });

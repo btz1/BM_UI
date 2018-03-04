@@ -18,7 +18,7 @@
                     title: 'List Customer',
                     controller:'ListCustomerController',
                     sidebarMeta: {
-                        icon: 'ion-gear-a',
+                        icon: 'ion-grid',
                         order: 200
                     },
                 });

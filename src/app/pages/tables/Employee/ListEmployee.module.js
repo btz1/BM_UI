@@ -18,7 +18,7 @@
                     title: 'List Employee',
                     controller:'ListEmployeeController',
                     sidebarMeta: {
-                        icon: 'ion-gear-a',
+                        icon: 'ion-grid',
                         order: 200
                     },
                 });

@@ -15,6 +15,12 @@
         $scope.allProducts = [];
         $scope.allCustomers = [];
         $scope.customerfirstName = "";
+        $scope.customerfirstName = "";
+        $scope.customerEmail = "";
+        $scope.customerAddress = "";
+        $scope.customerCity = "";
+        $scope.customerPhoneNumber ="";
+        $scope.customerBalance = "";
 
         $scope.getAllProducts = function () {
             var promise1 = productDataService.getAllProducts();
@@ -45,7 +51,12 @@
 
         $scope.populateSelectedCustomer = function (selected,item) {
             item.selectedCustomer = selected.firstName;
-            $scope.customerfirstName = selected.firstName;
+            $scope.customerfirstName = selected.firstName + selected.lastName;
+            $scope.customerEmail = selected.email;
+            $scope.customerAddress = selected.address1 + selected.address2;
+            $scope.customerCity = selected.city;
+            $scope.customerPhoneNumber = selected.phoneNumber;
+            $scope.customerBalance = selected.balance;
         };
 
 
