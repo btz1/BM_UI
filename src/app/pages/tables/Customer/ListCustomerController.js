@@ -9,13 +9,13 @@
         .controller('ListCustomerController', ListCustomerController);
 
     /** @ngInject */
-    function ListCustomerController ($scope,$http)
+    function ListCustomerController ($scope,$http,apiUrl)
     {
 
         $scope.loadCustomers = function () {
 
             $http({
-                url: "http://localhost:8080/getAllCustomers",
+                url: apiUrl+ "getAllCustomers",
                 method: "get",
                 headers: {
                     "content-type": "application/json"

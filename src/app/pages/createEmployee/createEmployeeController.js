@@ -9,7 +9,7 @@
         .controller('createEmployeeController', createEmployeeInitiated);
 
     /** @ngInject */
-    function createEmployeeInitiated($scope,$http)
+    function createEmployeeInitiated($scope,$http,apiUrl)
     {
         $scope.employeeName = "";
         $scope.daySalary = "";
@@ -38,7 +38,7 @@
                     "active":$scope.active
                 };
                 $http({
-                    url: "http://localhost:8080/createEmployee",
+                    url: apiUrl + "createEmployee",
                     method: "post",
                     params:{
                         employeeJSON:formData

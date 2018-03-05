@@ -9,7 +9,7 @@
       .controller('DashboardTodoCtrl', DashboardTodoCtrl);
 
   /** @ngInject */
-  function DashboardTodoCtrl($scope, baConfig,$http) {
+  function DashboardTodoCtrl($scope, baConfig,$http, dashBoardService) {
 
     $scope.transparent = baConfig.theme.blur;
     var dashboardColors = baConfig.colors.dashboard;
@@ -23,7 +23,7 @@
       return colors[i];
     }
 
-    /*$scope.todoList = [
+   /* $scope.todoList = [
       { text: 'Check me out' },
       { text: 'Lorem ipsum dolor sit amet, possit denique oportere at his, etiam corpora deseruisse te pro' },
       { text: 'Ex has semper alterum, expetenda dignissim' },
@@ -36,17 +36,14 @@
       { text: 'What do you think?' }
     ];*/
 
-    $scope.todoList.forEach(function(item) {
-      item.color = getRandomColor();
-    });
 
     $scope.newTodoText = '';
 
-    $scope.addToDoItem = function (event, clickPlus) {
+    $scope.addToDoItem = function (event, clickPlus, apiUrl) {
       if (clickPlus || event.which === 13) {
 
           $http({
-              url: "http://localhost:8080/saveTodoMessage",
+              url: apiUrl + "saveTodoMessage",
               method: "post",
               params:{
                   message:$scope.newTodoText
@@ -58,25 +55,24 @@
                   $scope.todoList = response.data;
               });
 
-        /*$scope.todoList.unshift({
+        $scope.todoList.unshift({
           text: $scope.newTodoText,
           color: getRandomColor(),
         });
-        $scope.newTodoText = '';*/
+        $scope.newTodoText = '';
       }
     };
 
       $scope.loadList = function () {
 
-              $http({
-                  url: "http://localhost:8080/getAllTodoMessage",
-                  method: "post",
-                  headers: {
-                      "content-type": "application/json"
-                  }
-              }).then(function(response){
-                  // $scope.todoList = response.data.todoMessage;
+          var todoListPromise = dashBoardService.getToDoList();
+
+          todoListPromise.then(function (response) {
+              $scope.todoList = response;
+              $scope.todoList.forEach(function(item) {
+                  item.color = getRandomColor();
               });
+          });
 
               /*$scope.todoList.unshift({
                 text: $scope.newTodoText,
@@ -84,5 +80,6 @@
               });
               $scope.newTodoText = '';*/
       };
+      $scope.loadList();
   }
 })();

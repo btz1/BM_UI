@@ -53,11 +53,11 @@
           }, {
               color: pieColor,
               description: 'Pending',
-              stats: 3,
+              stats: $scope.statTest.deliverableCount,
           }, {
               color: pieColor,
               description: 'Returned',
-              stats: 1,
+              stats: $scope.statTest.returnedCount,
           }
           ];
       };

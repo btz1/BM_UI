@@ -9,7 +9,7 @@
         .controller('createCustomerController', createCustomerInitiated);
 
     /** @ngInject */
-    function createCustomerInitiated($scope,$http)
+    function createCustomerInitiated($scope,$http,apiUrl)
     {
         $scope.firstName = "";
         $scope.lastName ="";
@@ -30,7 +30,7 @@
                     "phoneNumber":$scope.phone
                 };
                 $http({
-                    url: "http://localhost:8080/createCustomer",
+                    url: apiUrl + "createCustomer",
                     method: "post",
                     params:{
                         customerJson:formData

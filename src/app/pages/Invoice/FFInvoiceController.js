@@ -9,7 +9,7 @@
         .controller('FFInvoiceController', FFInvoiceController);
 
     /** @ngInject */
-    function FFInvoiceController ($scope,$http,productDataService,customerDataService,$q)
+    function FFInvoiceController ($scope,$http,productDataService,customerDataService,$q,apiUrl)
     {
 
         $scope.allProducts = [];
@@ -112,7 +112,7 @@
 
         $scope.loadCustomers=function() {
                 $http({
-                    url: "http://localhost:8080/getAllCustomers",
+                    url: apiUrl + "getAllCustomers",
                     method: "get",
                     headers: {
                         "content-type": "application/json"

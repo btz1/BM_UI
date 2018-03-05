@@ -9,7 +9,7 @@
         .controller('createProductController', createProductInitiated);
 
     /** @ngInject */
-    function createProductInitiated ($scope,$http)
+    function createProductInitiated ($scope,$http,apiUrl)
     {
         $scope.productCode ="";
         $scope.productName="";
@@ -27,7 +27,7 @@
                     "unit":$scope.unit
                 };
                 $http({
-                    url: "http://localhost:8080/createProduct",
+                    url: apiUrl + "createProduct",
                     method: "post",
                     params:{
                         productJSON:formData

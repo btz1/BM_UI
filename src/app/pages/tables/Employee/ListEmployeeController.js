@@ -9,13 +9,13 @@
         .controller('ListEmployeeController', ListEmployeeController);
 
     /** @ngInject */
-    function ListEmployeeController ($scope,$http)
+    function ListEmployeeController ($scope,$http,apiUrl)
     {
 
         $scope.loadEmployees = function () {
 
             $http({
-                url: "http://localhost:8080/getAllEmployee",
+                url: apiUrl + "getAllEmployee",
                 method: "post",
                 headers: {
                     "content-type": "application/json"

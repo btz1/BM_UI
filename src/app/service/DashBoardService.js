@@ -1,16 +1,30 @@
 (function() {
-    var dashBoardService = function($http) {
+    var dashBoardService = function($http,apiUrl) {
 
         var getStats = function() {
             return $http({
-                url: "http://localhost:8080/getDashBoardStats",
+                url: apiUrl+"getDashBoardStats",
                 method: "GET"
             }).then(function(response) {
-                return response.data
+                return response.data;
+            });
+        };
+
+
+        var getToDoList = function () {
+            return $http({
+                url: apiUrl+"getAllTodoMessage",
+                method: "GET",
+                headers: {
+                    "content-type": "application/json"
+                }
+            }).then(function(response){
+                return response.data;
             });
         };
         return {
-            getStats: getStats
+            getStats: getStats,
+            getToDoList:getToDoList
         };
     };
 

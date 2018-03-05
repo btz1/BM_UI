@@ -9,7 +9,7 @@
         .controller('SalesListController', SalesListController);
 
     /** @ngInject */
-    function SalesListController ($scope,$http)
+    function SalesListController ($scope,$http,apiUrl)
     {
 
         $scope.loadSalesData = function () {
@@ -17,7 +17,7 @@
 
 
             $http({
-                url: "http://localhost:8080/getAllSales",
+                url: apiUrl + "getAllSales",
                 method: "get",
                 headers: {
                     "content-type": "application/json"

@@ -1,9 +1,9 @@
 (function() {
-    var customerDataService = function($http) {
+    var customerDataService = function($http,apiUrl) {
 
         var getAllCustomers = function() {
             return $http({
-                url: "http://localhost:8080/getAllCustomers",
+                url: apiUrl+"getAllCustomers",
                 method: "GET"
             }).then(function(response) {
                 return response.data
@@ -12,7 +12,7 @@
 
         var getAllCustomersSummary = function() {
             return $http({
-                url: "http://localhost:8080/getAllCustomersSummary",
+                url: apiUrl+ "getAllCustomersSummary",
                 method: "GET"
             }).then(function(response) {
                 return response.data

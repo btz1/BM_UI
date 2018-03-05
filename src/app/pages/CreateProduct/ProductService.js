@@ -1,9 +1,9 @@
 (function() {
-    var productDataService = function($http) {
+    var productDataService = function($http,apiUrl) {
 
         var getAllProducts = function() {
             return $http({
-                url: "http://localhost:8080/getAllProducts",
+                url: apiUrl + "getAllProducts",
                 method: "GET"
             }).then(function(response) {
                 return response.data
