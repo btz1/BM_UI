@@ -23,7 +23,7 @@
                     "productCode":$scope.productCode,
                     "name":$scope.productName,
                     "price":$scope.productPrice,
-                    "spacialPrice":$scope.specialPrice,
+                    "specialPrice":$scope.specialPrice,
                     "unit":$scope.unit
                 };
                 $http({

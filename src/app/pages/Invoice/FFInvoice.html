@@ -1,7 +1,7 @@
 
 <div>
     <section class="row" ng-controller="FFInvoiceController" ba-panel ba-panel-class="with-scroll">
-        <div><span><span>Name: &nbsp;&nbsp; {{customerfirstName}}</span></span>
+       <!-- <div><span><span>Name: &nbsp;&nbsp; {{customerfirstName}}</span></span>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -32,7 +32,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span><span>Balance:&nbsp;&nbsp; {{customerBalance}}</span></span></div><br>
+            <span><span>Balance:&nbsp;&nbsp; {{customerBalance}}</span></span></div><br>-->
 
         <table class="table table-hover">
             <thead>
@@ -92,7 +92,8 @@
 
         </table>
         <button type="button" class="btn btn-primary" ng-click="add()">Add item</button>&nbsp;&nbsp;&nbsp;
-        <button ng-click="printInvoice('printSection1')" class="btn btn-primary">Print</button>
+        <button type="button" ng-click="printInvoice('printSection1')" class="btn btn-primary">Print</button>
+        <button type="button" ng-click="saveSaleData()" class="btn btn-primary">Add Sale</button>
     </section>
 
 
