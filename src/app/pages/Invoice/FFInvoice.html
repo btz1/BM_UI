@@ -1,43 +1,39 @@
 
 <div>
     <section class="row" ng-controller="FFInvoiceController" ba-panel ba-panel-class="with-scroll">
-       <!-- <div><span><span>Name: &nbsp;&nbsp; {{customerfirstName}}</span></span>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>
-            <span>Email: &nbsp;&nbsp;{{customerEmail}}</span></span></div><br>
-        <div><span><span>Address: &nbsp;&nbsp;{{customerAddress}}</span></span>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span><span>City:&nbsp;&nbsp; {{customerCity}}</span></span></div><br>
-        <div><span><span>Phone Number:&nbsp;&nbsp;  {{customerPhoneNumber}}</span></span>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span><span>Balance:&nbsp;&nbsp; {{customerBalance}}</span></span></div><br>-->
 
-        <table class="table table-hover">
+
+        <div class="col-md-12">
+            <div class="col-md-2">Select Customer:</div>
+            <div class="col-md-4"><select ng-model="selectedCustomer" ng-options="option.firstName for option in item.customerList"
+                                           class="form-control" ng-change="populateSelectedCustomer(selectedCustomer,item)">
+                <option value="">Select customer</option>
+            </select></div>
+        </div>
+
+        <br/><br/><br/>
+        <div class="col-md-12">
+            <div class="col-md-6">Name: {{customerfirstName}}</div>
+            <div class="col-md-6">Email: {{customerEmail}}</div>
+        </div>
+
+        <br/><br/><br/>
+        <div class="col-md-12">
+            <div class="col-md-6">Address: {{customerAddress}}</div>
+            <div class="col-md-6">City: {{customerCity}}
+        </div>
+
+        <br/><br/><br/>
+        <div>
+            <div class="col-md-6">Phone Number: {{customerPhoneNumber}}</div>
+            <div class="col-md-6">Balance: {{customerBalance}}</div>
+        </div>
+            <br/>
+            <hr/>
+
+        <table class="table">
             <thead>
             <tr>
-                <th>Select Customer</th>
                 <th>Select Product</th>
                 <th>Unit Price</th>
                 <th>Quantity</th>
@@ -47,12 +43,6 @@
             </thead>
             <tbody id="printSection2">
             <tr ng-repeat="item in invoice.items">
-                <td>
-                    <select ng-model="selectedCustomer" ng-options="option.firstName for option in item.customerList"
-                            class="form-control" ng-change="populateSelectedCustomer(selectedCustomer,item)">
-                        <option value="">Select customer</option>
-                    </select>
-                </td>
 
                 <td>
                     <select ng-model="selectedProduct" ng-options="option.urduName for option in item.productList" class="form-control"
@@ -63,13 +53,14 @@
                 <td><input type="number" ng-model="item.price" class="form-control" /></td>
                 <td><input type="number" ng-model="item.qty" class="form-control" /></td>
                 <td>{{item.qty * item.price}}</td>
-                <td><button type="button" class="btn btn-danger" ng-click="remove($index)">Delete</button></td>
+                <td><button type="button" class="btn btn-danger" style="width: 65px;height: 30px;" ng-click="remove($index)">Delete</button></td>
             </tr>
             <tr>
                 <td></td>
                 <td></td>
                 <td>Total : </td>
                 <td>{{total()}}</td>
+                <td></td>
             </tr>
             </tbody>
 
@@ -91,7 +82,28 @@
             </tbody>
 
         </table>
-        <button type="button" class="btn btn-primary" ng-click="add()">Add item</button>&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-primary" ng-click="add()">Add item</button>
+
+            <br/><br/><br/>
+            <div class="col-md-12">
+                <div class="col-md-2">Advance Payment:</div>
+                <div class="col-md-4"><input type="text" class="form-control"/></div>
+            </div>
+
+            <br/><br/><br/>
+            <div class="col-md-12">
+                <div class="col-md-2">Deliver Date</div>
+                <div class="col-md-4"><input type="text" class="form-control"/></div>
+            </div>
+
+
+            <br/><br/><br/>
+            <div class="col-md-12">
+                <div class="col-md-2">Cash Payment</div>
+                <div class="col-md-4"><label><input type="checkbox" checked></label></div>
+            </div>
+
+            <br/><br/><br/>
         <button type="button" ng-click="printInvoice('printSection1')" class="btn btn-primary">Print</button>
         <button type="button" ng-click="saveSaleData()" class="btn btn-primary">Add Sale</button>
     </section>
