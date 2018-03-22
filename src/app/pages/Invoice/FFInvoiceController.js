@@ -21,6 +21,7 @@
         $scope.customerCity = "";
         $scope.customerPhoneNumber ="";
         $scope.customerBalance = "";
+        $scope.selectedCustomer;
 
         $scope.getAllProducts = function () {
             var promise1 = productDataService.getAllProducts();
@@ -33,9 +34,7 @@
                 $scope.invoice = {
                     items: [{
                         productList: $scope.allProducts,
-                        customerList:$scope.allCustomers,
                         selectedProduct:"",
-                        selectedCustomer:"",
                         qty: 1,
                         price: ""
                     }]
