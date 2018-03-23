@@ -4,7 +4,7 @@
 
 
         <div class="col-md-12">
-            <div class="col-md-2">Select Customer:</div>
+            <div class="col-md-2" style="margin-top: 10px;"><b>Select Customer:</b></div>
             <div class="col-md-4"><select ng-model="selectedCustomer" ng-options="option.firstName for option in allCustomers"
                                            class="form-control" ng-change="populateSelectedCustomer(selectedCustomer,item)">
                 <option value="">Select customer</option>
@@ -13,20 +13,20 @@
 
         <br/><br/><br/>
         <div class="col-md-12">
-            <div class="col-md-6">Name: {{selectedCustomer.firstName}} {{selectedCustomer.lastName}}</div>
-            <div class="col-md-6">Email: {{selectedCustomer.email}}</div>
+            <div class="col-md-6"><b>Name:</b> {{selectedCustomer.firstName}} {{selectedCustomer.lastName}}</div>
+            <div class="col-md-6"><b>Email:</b> {{selectedCustomer.email}}</div>
         </div>
 
         <br/><br/><br/>
         <div class="col-md-12">
-            <div class="col-md-6">Address: {{selectedCustomer.address1}}</div>
-            <div class="col-md-6">City: {{selectedCustomer.city}}
+            <div class="col-md-6"><b>Address:</b> {{selectedCustomer.address1}}</div>
+            <div class="col-md-6"><b>City:</b> {{selectedCustomer.city}}
         </div>
 
         <br/><br/><br/>
         <div>
-            <div class="col-md-6">Phone Number: {{selectedCustomer.phoneNumber}}</div>
-            <div class="col-md-6">Balance: {{selectedCustomer.balance}}</div>
+            <div class="col-md-6"><b>Phone Number:</b> {{selectedCustomer.phoneNumber}}</div>
+            <div class="col-md-6"><b>Balance:</b> {{selectedCustomer.balance}}</div>
         </div>
             <br/>
             <hr/>
@@ -34,11 +34,11 @@
         <table class="table">
             <thead>
             <tr>
-                <th>Select Product</th>
-                <th>Unit Price</th>
-                <th>Quantity</th>
-                <th>Item Total</th>
-                <th>Delete</th>
+                <th><b>Select Product</b></th>
+                <th><b>Unit Price</b></th>
+                <th><b>Quantity</b></th>
+                <th><b>Item Total</b></th>
+                <th><b>Delete</b></th>
             </tr>
             </thead>
             <tbody id="printSection2">
@@ -84,20 +84,20 @@
 
             <br/><br/><br/>
             <div class="col-md-12">
-                <div class="col-md-2">Advance Payment:</div>
+                <div class="col-md-2"><b>Advance Payment:</b></div>
                 <div class="col-md-4"><input type="text" class="form-control"/></div>
             </div>
 
             <br/><br/><br/>
             <div class="col-md-12">
-                <div class="col-md-2">Deliver Date:</div>
+                <div class="col-md-2"><b>Deliver Date:</b></div>
                 <div class="col-md-4"><input type="text" class="form-control"/></div>
             </div>
 
 
             <br/><br/><br/>
             <div class="col-md-12">
-                <div class="col-md-2">Cash Payment:</div>
+                <div class="col-md-2"><b>Cash Payment:</b></div>
                 <div class="col-md-4"><label><input type="checkbox" checked></label></div>
             </div>
 
