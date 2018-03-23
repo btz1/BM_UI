@@ -5,7 +5,7 @@
 
         <div class="col-md-12">
             <div class="col-md-2">Select Customer:</div>
-            <div class="col-md-4"><select ng-model="selectedCustomer" ng-options="option.firstName for option in item.customerList"
+            <div class="col-md-4"><select ng-model="selectedCustomer" ng-options="option.firstName for option in allCustomers"
                                            class="form-control" ng-change="populateSelectedCustomer(selectedCustomer,item)">
                 <option value="">Select customer</option>
             </select></div>
@@ -13,20 +13,20 @@
 
         <br/><br/><br/>
         <div class="col-md-12">
-            <div class="col-md-6">Name: {{customerfirstName}}</div>
-            <div class="col-md-6">Email: {{customerEmail}}</div>
+            <div class="col-md-6">Name: {{selectedCustomer.firstName}} {{selectedCustomer.lastName}}</div>
+            <div class="col-md-6">Email: {{selectedCustomer.email}}</div>
         </div>
 
         <br/><br/><br/>
         <div class="col-md-12">
-            <div class="col-md-6">Address: {{customerAddress}}</div>
-            <div class="col-md-6">City: {{customerCity}}
+            <div class="col-md-6">Address: {{selectedCustomer.address1}}</div>
+            <div class="col-md-6">City: {{selectedCustomer.city}}
         </div>
 
         <br/><br/><br/>
         <div>
-            <div class="col-md-6">Phone Number: {{customerPhoneNumber}}</div>
-            <div class="col-md-6">Balance: {{customerBalance}}</div>
+            <div class="col-md-6">Phone Number: {{selectedCustomer.phoneNumber}}</div>
+            <div class="col-md-6">Balance: {{selectedCustomer.balance}}</div>
         </div>
             <br/>
             <hr/>
