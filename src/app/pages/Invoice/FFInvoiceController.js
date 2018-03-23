@@ -130,14 +130,8 @@
                 '<table>' +
                 '<tr><th style="width:14em;text-align: left">Advance Payment:</th>' +
                 '<td style="width:13em;text-align: left"></td></tr>' +
-                '</table>'+
-
-                '<table>' +
                 '<tr><th style="width:14em;text-align: left">Deliver Date:</th>' +
                 '<td style="width:13em;text-align: left"></td></tr>' +
-                '</table>'+
-
-                '<table>' +
                 '<tr><th style="width:14em;text-align: left">Cash Payment:</th>' +
                 '<td style="width:13em;text-align: left"></td></tr>' +
                 '</table>'+
