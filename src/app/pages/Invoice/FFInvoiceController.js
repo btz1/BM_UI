@@ -98,7 +98,7 @@
                 '</head><body onload="window.print()"> <section class="row" ng-show="false" > <div style="width: 100%;"> ' +
                 '<img src="../../../assets/img/header.jpg" width="100%" height="200px" /><br/><br/><br/> ' +
                 '<table>' +
-                '<tr><th style="width:14em;text-align: left"><h3>Customer Information:</h3></th>' +
+                '<tr><th style="width:14em;text-align: left"><h4>Customer Information:</h4></th>' +
                 '</table>'+
                 '<table>' +
                 '<tr><th style="width:25em;text-align: left">Name:</th>' +
