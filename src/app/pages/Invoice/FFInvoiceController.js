@@ -98,14 +98,56 @@
             popupWinindow.document.write('<html><head><link rel="stylesheet" type="text/css" href="style.css" />' +
                 '</head><body onload="window.print()"> <section class="row" ng-show="false" > <div style="width: 100%;"> ' +
                 '<img src="../../../assets/img/header.jpg" width="100%" height="250px" /><br/><br/><br/> ' +
-                '<table class="table table-hover" style="border:1px solid black;width: 100%"> ' +
-                '<thead> <tr> ' +
-                '<th style="border:1px solid black;padding: 10px;">Customer</th> ' +
-                '<th style="border:1px solid black;padding: 10px;">Product</th> ' +
-                '<th style="border:1px solid black;padding: 10px;">Unit Price</th> ' +
-                '<th style="border:1px solid black;padding: 10px;">Quantity</th> ' +
-                '<th style="border:1px solid black;padding: 10px;">Item Total</th> ' +
-                '</tr> </thead>' + innerContents + ' </table> ' +
+                '<table>' +
+                '<tr><th style="width:14em;text-align: left">Select Customer:</th>' +
+                '<td style="width:13em;text-align: left"></td></tr>' +
+                '</table>'+
+                '<table>' +
+                '<tr><th style="width:25em;text-align: left">Name:</th>' +
+                '<td style="width:25em;text-align: left"></td>' +
+                '<th style="width:25em;text-align: left">Email:</th>' +
+                '<td style="width:25em;text-align: left"></td></tr>' +
+                '</table>'+
+                '<table>' +
+                '<tr><th style="width:25em;text-align: left">Address:</th>' +
+                '<td style="width:25em;text-align: left"></td>' +
+                '<th style="width:25em;text-align: left">City:</th>' +
+                '<td style="width:25em;text-align: left"></td></tr>' +
+                '</table>'+
+                '<table>' +
+                '<tr><th style="width:25em;text-align: left">Phone Number:</th>' +
+                '<td style="width:25em;text-align: left"></td>' +
+                '<th style="width:25em;text-align: left">Balance:</th>' +
+                '<td style="width:25em;text-align: left"></td></tr>' +
+                '</table>'+
+
+                '<br/>'+
+
+                '<table style="width: 100%;border-collapse: collapse"> ' +
+                ' <tr> ' +
+                '<th style="border:0.1px solid black;padding: 5px;">Product</th> ' +
+                '<th style="border:0.1px solid black;padding: 5px;">Unit Price</th> ' +
+                '<th style="border:0.1px solid black;padding: 5px;">Quantity</th> ' +
+                '<th style="border:0.1px solid black;padding: 5px;">Item Total</th> ' +
+                '<th style="border:0.1px solid black;padding: 5px;"></th>'+
+                '</tr>' + innerContents + ' </table> ' +
+
+                '<br/>'+
+
+                '<table>' +
+                '<tr><th style="width:14em;text-align: left">Advance Payment:</th>' +
+                '<td style="width:13em;text-align: left"></td></tr>' +
+                '</table>'+
+
+                '<table>' +
+                '<tr><th style="width:14em;text-align: left">Deliver Date:</th>' +
+                '<td style="width:13em;text-align: left"></td></tr>' +
+                '</table>'+
+
+                '<table>' +
+                '<tr><th style="width:14em;text-align: left">Cash Payment:</th>' +
+                '<td style="width:13em;text-align: left"></td></tr>' +
+                '</table>'+
                 '<br/><br/> <img src="../../../assets/img/footer.jpg" width="100%" height="100px" /> </div> </section> </html>');
             popupWinindow.document.close();
         };
