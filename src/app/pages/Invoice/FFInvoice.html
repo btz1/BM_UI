@@ -91,7 +91,16 @@
             <br/><br/><br/>
             <div class="col-md-12">
                 <div class="col-md-2"><b>Deliver Date:</b></div>
-                <div class="col-md-4"><input type="text" ng-model="deliveredDate" class="form-control"/></div>
+                <div class="col-xlg-6" ng-controller="datepickerpopupCtrl">
+                    <p class="col-md-4">
+                        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" datepicker-options="options" ng-model="deliveredDate" is-open="opened" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" show-button-bar="false" />
+                        <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+                    </p>
+                </div>
+
+                <!--<div class="col-md-4"><input type="text" ng-model="deliveredDate" class="form-control"/></div>-->
             </div>
 
 

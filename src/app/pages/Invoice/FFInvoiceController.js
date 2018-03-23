@@ -144,20 +144,6 @@
         };
 
         $scope.saveSaleData = function () {
-            $http({
-                url: apiUrl + "saveSalesData",
-                method: "post",
-                params:{
-                    salePaymentJSON:data
-                },
-                headers: {
-                    "content-type": "application/json"
-                }
-            }).then(function (response) {
-                $scope.customer = response.data
-
-
-            })
 
         };
 
