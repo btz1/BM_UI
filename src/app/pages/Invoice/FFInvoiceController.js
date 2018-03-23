@@ -21,7 +21,8 @@
         $scope.customerCity = "";
         $scope.customerPhoneNumber ="";
         $scope.customerBalance = "";
-        $scope.selectedCustomer;
+        $scope.saleDataJSON={};
+        $scope.saleProducts=[];
 
         $scope.getAllProducts = function () {
             var promise1 = productDataService.getAllProducts();
@@ -46,6 +47,12 @@
         $scope.populateSelectedProduct = function (selected,item) {
             item.selectedProduct = selected.urduName;
             item.price = selected.price;
+            var productDetail = {
+                quantity: item.quantity,
+                salePrice: selected.price,
+                productModel: selected
+            };
+            $scope.saleProducts.push(productDetail);
         };
 
         $scope.populateSelectedCustomer = function (selected,item) {
@@ -78,9 +85,14 @@
             var total = 0;
             angular.forEach($scope.invoice.items, function(item){
                 total += item.qty * item.price;
-            })
+            });
             return total;
         };
+
+        $scope.saveSaleData = function () {
+
+        };
+
 
         $scope.customer ="";
         $scope.product="";
@@ -137,10 +149,6 @@
                 '</table>'+
                 '<br/><br/> <img src="../../../assets/img/footer.jpg" width="100%" height="100px" /> </div> </section> </html>');
             popupWinindow.document.close();
-        };
-
-        $scope.saveSaleData = function () {
-
         };
 
         $scope.loadCustomers=function() {
