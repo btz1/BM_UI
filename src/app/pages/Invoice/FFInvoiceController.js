@@ -89,7 +89,7 @@
         $scope.itemTotal="";
 
 
-        $scope.printInvoice = function(printSectionId) {
+        $scope.printInvoice = function(printSectionId,selectedCustomer) {
             var innerContents = document.getElementById(printSectionId).innerHTML;
             var innerContents1 = document.getElementById("printSection2").innerHTML;
             var popupWinindow = window.open('', '_blank', 'width=4000,height=4000,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
@@ -98,26 +98,21 @@
                 '</head><body onload="window.print()"> <section class="row" ng-show="false" > <div style="width: 100%;"> ' +
                 '<img src="../../../assets/img/header.jpg" width="100%" height="250px" /><br/><br/><br/> ' +
                 '<table>' +
-                '<tr><th style="width:14em;text-align: left">Select Customer:</th>' +
-                '<td style="width:13em;text-align: left"></td></tr>' +
+                '<tr><th style="width:14em;text-align: left"><b>Customer Information:</b></th>' +
                 '</table>'+
                 '<table>' +
                 '<tr><th style="width:25em;text-align: left">Name:</th>' +
-                '<td style="width:25em;text-align: left"></td>' +
+                '<td style="width:25em;text-align: left">'+selectedCustomer.firstName +' ' + selectedCustomer.lastName+'</td>' +
                 '<th style="width:25em;text-align: left">Email:</th>' +
-                '<td style="width:25em;text-align: left"></td></tr>' +
-                '</table>'+
-                '<table>' +
+                '<td style="width:25em;text-align: left">'+selectedCustomer.email+'</td></tr>' +
                 '<tr><th style="width:25em;text-align: left">Address:</th>' +
-                '<td style="width:25em;text-align: left"></td>' +
+                '<td style="width:25em;text-align: left">'+selectedCustomer.address1+'</td>' +
                 '<th style="width:25em;text-align: left">City:</th>' +
-                '<td style="width:25em;text-align: left"></td></tr>' +
-                '</table>'+
-                '<table>' +
+                '<td style="width:25em;text-align: left">'+selectedCustomer.city+'</td></tr>' +
                 '<tr><th style="width:25em;text-align: left">Phone Number:</th>' +
-                '<td style="width:25em;text-align: left"></td>' +
+                '<td style="width:25em;text-align: left">'+selectedCustomer.phoneNumber+'</td>' +
                 '<th style="width:25em;text-align: left">Balance:</th>' +
-                '<td style="width:25em;text-align: left"></td></tr>' +
+                '<td style="width:25em;text-align: left">'+selectedCustomer.balance+'</td></tr>' +
                 '</table>'+
 
                 '<br/>'+
@@ -128,7 +123,6 @@
                 '<th style="border:0.1px solid black;padding: 5px;">Unit Price</th> ' +
                 '<th style="border:0.1px solid black;padding: 5px;">Quantity</th> ' +
                 '<th style="border:0.1px solid black;padding: 5px;">Item Total</th> ' +
-                '<th style="border:0.1px solid black;padding: 5px;"></th>'+
                 '</tr>' + innerContents + ' </table> ' +
 
                 '<br/>'+

@@ -66,18 +66,16 @@
 
             <tbody id="printSection1" ng-show="false">
             <tr ng-repeat="item in invoice.items" >
-                <td  ng-show="false" style="border:1px solid black;padding: 10px;">{{item.selectedCustomer}}</td>
-                <td  ng-show="false" style="border:1px solid black;padding: 10px;">{{item.selectedProduct}}</td>
-                <td  ng-show="false" style="border:1px solid black;padding: 10px;">{{item.price}}</td>
-                <td  ng-show="false" style="border:1px solid black;padding: 10px;">{{item.qty}}</td>
-                <td  ng-show="false" style="border:1px solid black;padding: 10px;">{{item.qty * item.price}}</td>
+                <td  ng-show="false" style="border:1px solid black;padding: 5px;">{{item.selectedProduct}}</td>
+                <td  ng-show="false" style="border:1px solid black;padding: 5px;">{{item.price}}</td>
+                <td  ng-show="false" style="border:1px solid black;padding: 5px;">{{item.qty}}</td>
+                <td  ng-show="false" style="border:1px solid black;padding: 5px;">{{item.qty * item.price}}</td>
             </tr>
             <tr>
-                <td style="border:1px solid black;padding: 10px;"></td>
-                <td style="border:1px solid black;padding: 10px;"></td>
-                <td style="border:1px solid black;padding: 10px;">Total : </td>
-                <td style="border:1px solid black;padding: 10px;"></td>
-                <td style="border:1px solid black;padding: 10px;">{{total()}}</td>
+                <td style="border:1px solid black;padding: 5px;"></td>
+                <td style="border:1px solid black;padding: 5px;"></td>
+                <td style="border:1px solid black;padding: 5px;">Total : </td>
+                <td style="border:1px solid black;padding: 5px;">{{total()}}</td>
             </tr>
             </tbody>
 
@@ -104,7 +102,7 @@
             </div>
 
             <br/><br/><br/>
-        <button type="button" ng-click="printInvoice('printSection1')" class="btn btn-primary">Print</button>&nbsp;&nbsp;&nbsp;
+        <button type="button" ng-click="printInvoice('printSection1',selectedCustomer)" class="btn btn-primary">Print</button>&nbsp;&nbsp;&nbsp;
         <button type="button" ng-click="saveSaleData()" class="btn btn-primary">Add Sale</button>
     </section>
 
