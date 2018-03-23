@@ -69,14 +69,9 @@
         };
 
 
-
-        console.log($scope.invoice);
         $scope.add = function(){
             $scope.invoice.items.push({
                 productList: $scope.allProducts,
-                customerList:$scope.allCustomers,
-                selectedProduct:"",
-                selectedCustomer:"",
                 qty: 1,
                 price: ""
             });
