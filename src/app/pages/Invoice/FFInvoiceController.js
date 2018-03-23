@@ -21,7 +21,11 @@
         $scope.customerCity = "";
         $scope.customerPhoneNumber ="";
         $scope.customerBalance = "";
+        $scope.advancePayment = "";
+        $scope.deliveredDate = "";
+        $scope.cashAmount= false;
         $scope.selectedCustomer;
+
 
         $scope.getAllProducts = function () {
             var promise1 = productDataService.getAllProducts();
@@ -140,21 +144,25 @@
         };
 
         $scope.saveSaleData = function () {
+            $http({
+                url: apiUrl + "saveSalesData",
+                method: "post",
+                params:{
+                    salePaymentJSON:data
+                },
+                headers: {
+                    "content-type": "application/json"
+                }
+            }).then(function (response) {
+                $scope.customer = response.data
+
+
+            })
 
         };
 
         $scope.loadCustomers=function() {
-                $http({
-                    url: apiUrl + "getAllCustomers",
-                    method: "get",
-                    headers: {
-                        "content-type": "application/json"
-                    }
-                }).then(function (response) {
-                    $scope.customer = response.data
 
-
-                })
 
         };
 
