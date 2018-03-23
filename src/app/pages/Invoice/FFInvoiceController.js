@@ -21,11 +21,11 @@
         $scope.customerCity = "";
         $scope.customerPhoneNumber ="";
         $scope.customerBalance = "";
+        $scope.saleDataJSON={};
+        $scope.saleProducts=[];
         $scope.advancePayment = "";
         $scope.deliveredDate = "";
         $scope.cashAmount= false;
-        $scope.selectedCustomer;
-
 
         $scope.getAllProducts = function () {
             var promise1 = productDataService.getAllProducts();
@@ -50,6 +50,12 @@
         $scope.populateSelectedProduct = function (selected,item) {
             item.selectedProduct = selected.urduName;
             item.price = selected.price;
+            var productDetail = {
+                quantity: item.quantity,
+                salePrice: selected.price,
+                productModel: selected
+            };
+            $scope.saleProducts.push(productDetail);
         };
 
         $scope.populateSelectedCustomer = function (selected,item) {
@@ -85,6 +91,11 @@
             })
             return total;
         };
+
+        $scope.saveSaleData = function () {
+
+        };
+
 
         $scope.customer ="";
         $scope.product="";
@@ -148,7 +159,17 @@
         };
 
         $scope.loadCustomers=function() {
+                $http({
+                    url: apiUrl + "getAllCustomers",
+                    method: "get",
+                    headers: {
+                        "content-type": "application/json"
+                    }
+                }).then(function (response) {
+                    $scope.customer = response.data
 
+
+                })
 
         };
 
