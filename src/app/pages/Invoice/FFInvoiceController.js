@@ -149,6 +149,10 @@
             popupWinindow.document.close();
         };
 
+        $scope.saveSaleData = function () {
+
+        };
+
         $scope.loadCustomers=function() {
                 $http({
                     url: apiUrl + "getAllCustomers",
