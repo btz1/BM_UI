@@ -1,0 +1,42 @@
+<form class="form-horizontal">
+
+    <!--<div class="form-group ">
+        <label  class="col-sm-2 control-label">Sales ID's</label>
+        <ui-select ng-model="salesId"
+                   class="col-sm-10"
+                   ng-disabled="false"
+                   append-to-body="true"
+                   search-enabled="true">
+            <ui-select-match placeholder="Select Sales Id With Search">
+                {{saleData.salesId}}
+            </ui-select-match>
+            <ui-select-choices
+                    repeat="sales in saleData.salesId | filter: saleData.salesId">
+                <span ng-bind-html="saleData"></span>
+            </ui-select-choices>
+        </ui-select>
+    </div>-->
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Sales ID's</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" ng-model="salesId" placeholder="Enter Sale Id ">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Paid Amount</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" ng-model="paidAmount" placeholder="Enter Paid Amount">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Check If Amount in Cash</label>
+        <div class="col-sm-10">
+            <input type="checkbox" ng-model="isCash" placeholder="Enter Paid Amount">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-warning" ng-click="addPaidAmountToSale()">Add Amount</button>
+        </div>
+    </div>
+</form>
