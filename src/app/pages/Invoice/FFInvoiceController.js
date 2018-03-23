@@ -23,6 +23,9 @@
         $scope.customerBalance = "";
         $scope.saleDataJSON={};
         $scope.saleProducts=[];
+        $scope.advancePayment = "";
+        $scope.deliveredDate = "";
+        $scope.cashAmount= false;
 
         $scope.getAllProducts = function () {
             var promise1 = productDataService.getAllProducts();
@@ -85,7 +88,7 @@
             var total = 0;
             angular.forEach($scope.invoice.items, function(item){
                 total += item.qty * item.price;
-            });
+            })
             return total;
         };
 
