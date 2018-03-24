@@ -1,8 +1,10 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <div class="horizontal-scroll" ng-init="loadCustomers()" ba-panel ba-panel-class="with-scroll">
     <input type="text" ng-model="searchCustomer" placeholder="Search here" class="form-control">
 
-    <table class="table" >
-        <thead>
+    <table class="table table-width" >
         <tr class="sortable ">
             <th>Customer ID</th>
             <th>Customer First Name</th>
@@ -12,23 +14,26 @@
             <th>Customer City </th>
             <th>Customer Phone </th>
         </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="item in customersData | filter: searchCustomer">
-            <td>{{item.id}}</td>
-            <td>{{item.firstName}}</td>
-            <td>{{item.lastName}}</td>
-            <!--<td><a class="email-link" ng-href="mailto:{{item.email}}">{{item.email}}</a></td>-->
-            <td>{{item.email}}</td>
-            <td>{{item.address1}}{{item.address2}}</td>
-            <td>{{item.city}}</td>
-            <td>{{item.phoneNumber}}</td>
-
-        </tr>
-        </tbody>
-        <tfoot>
-        </tfoot>
     </table>
+    <div ng-repeat="item in customersData | filter: searchCustomer">
+        <table class="table table-hover table-width">
+            <tr data-toggle="collapse" data-target="{{'#'+item.id}}">
+                <td>{{item.id}}</td>
+                <td>{{item.firstName}}</td>
+                <td>{{item.lastName}}</td>
+                <!--<td><a class="email-link" ng-href="mailto:{{item.email}}">{{item.email}}</a></td>-->
+                <td>{{item.email}}</td>
+                <td><div>{{item.address1}}{{item.address2}}</div></td>
+                <td>{{item.city}}</td>
+                <td>{{item.phoneNumber}}</td>
 
+            </tr>
+        </table>
+        <table style="  border: 1px solid #abb1ba;margin-left: 20px;" >
+            <tr id="{{item.id}}" class="collapse " >
+                <td>new data</td>
 
+            </tr>
+        </table>
+    </div>
 </div>

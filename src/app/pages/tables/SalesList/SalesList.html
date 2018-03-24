@@ -4,7 +4,7 @@
 <div class="horizontal-scroll" ng-init="loadSalesData()" ba-panel ba-panel-class="with-scroll">
     <input type="text" ng-model="searchSales" placeholder="Search here" class="form-control">
 
-<table class="table"><tr>
+<table class="table table-width"><tr>
     <th>Sales Id</th>
     <th>Sales Date</th>
     <th>Sales Delivered Date</th>
@@ -12,7 +12,7 @@
     <th>Sales Advance Payment </th>
 </tr></table>
 <div ng-repeat="item in SalesData |filter :searchSales">
-    <table class="table table-hover">
+    <table class="table table-hover table-width">
         <tr  data-toggle="collapse" data-target="{{'#'+item.salesId}}">
             <td >{{item.salesId}}</td>
             <td>{{item.saleDate}}</td>
@@ -22,7 +22,7 @@
             <td>{{item.advancePayment}}</td>
         </tr></table>
         <table style="  border: 1px solid #abb1ba;margin-left: 20px;" class="table-collapse"><tr id="{{item.salesId}}" class="collapse " >
-           <td >
+           <td>
                <br/>
                <h5 style="margin-left: 50px;">Customer Information:</h5>
                <table style="margin-left: 100px;">
