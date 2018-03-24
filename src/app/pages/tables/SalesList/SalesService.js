@@ -13,7 +13,23 @@
             });
         };
 
+        var saveSaleData = function (data) {
+            return $http({
+                url: apiUrl+"saveSalesData",
+                method: "POST",
+                params: {
+                    jsonObject:data
+                },
+                headers: {
+                    "content-type": "application/json"
+                }
+            }).then(function(response) {
+                return response.data
+            });
+        };
+
         return {
+            saveSaleData: saveSaleData,
             loadSalesData: loadSalesData
         };
     };

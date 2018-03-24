@@ -20,7 +20,7 @@
         <br/><br/><br/>
         <div class="col-md-12">
             <div class="col-md-6"><b>Address:</b> {{selectedCustomer.address1}}</div>
-            <div class="col-md-6"><b>City:</b> {{selectedCustomer.city}}
+            <div class="col-md-6"><b>City:</b> {{selectedCustomer.city}}</div>
         </div>
 
         <br/><br/><br/>
@@ -93,14 +93,15 @@
                 <div class="col-md-2"><b>Deliver Date:</b></div>
                 <div class="col-xlg-6" ng-controller="datepickerpopupCtrl">
                     <p class="col-md-4">
-                        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" datepicker-options="options" ng-model="deliveredDate" is-open="opened" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" show-button-bar="false" />
+                        <input type="text" class="form-control" uib-datepicker-popup="dd.MM.yyyy" datepicker-options="options"
+                               ng-model="selectedDate" ng-change="setSelectedDate()" is-open="opened" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" show-button-bar="false" />
                         <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
           </span>
                     </p>
+                    <span>{{deliverDate }}</span>
+                    <span>{{advancePayment}}</span>
                 </div>
-
-                <!--<div class="col-md-4"><input type="text" ng-model="deliveredDate" class="form-control"/></div>-->
             </div>
 
 
@@ -112,8 +113,8 @@
 
             <br/><br/><br/>
         <button type="button" ng-click="printInvoice('printSection1',selectedCustomer)" class="btn btn-primary">Print</button>&nbsp;&nbsp;&nbsp;
-        <button type="button" ng-click="saveSaleData()" class="btn btn-primary">Add Sale</button>
+            <span>{{deliverDate}}</span>
+        <span>{{advancePayment}}</span>
+        <button type="button" ng-click="saveSaleData(advancePayment,selectedCustomer)" class="btn btn-primary">Add Sale</button>
     </section>
-
-
 </div>

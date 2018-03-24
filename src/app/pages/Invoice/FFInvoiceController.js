@@ -9,7 +9,7 @@
         .controller('FFInvoiceController', FFInvoiceController);
 
     /** @ngInject */
-    function FFInvoiceController ($scope,$http,productDataService,customerDataService,$q,apiUrl)
+    function FFInvoiceController ($scope,$http,productDataService,customerDataService,$q,apiUrl,datePickerSharingService,salesDataService)
     {
 
         $scope.allProducts = [];
@@ -24,7 +24,7 @@
         $scope.saleDataJSON={};
         $scope.saleProducts=[];
         $scope.advancePayment = "";
-        $scope.deliveredDate = "";
+        $scope.deliverDate = "";
         $scope.cashAmount= false;
 
         $scope.getAllProducts = function () {
@@ -51,7 +51,7 @@
             item.selectedProduct = selected.urduName;
             item.price = selected.price;
             var productDetail = {
-                quantity: item.quantity,
+                quantity: item.qty,
                 salePrice: selected.price,
                 productModel: selected
             };
@@ -87,8 +87,15 @@
             return total;
         };
 
-        $scope.saveSaleData = function () {
-
+        $scope.saveSaleData = function (advancePayment,selectedCustomer) {
+            var saleJSON = {
+                totalAmount:$scope.total(),
+                deliverDate:datePickerSharingService.selectedDate,
+                advancePayment:advancePayment,
+                saleProductList:$scope.saleProducts,
+                customer:selectedCustomer
+            };
+            salesDataService.saveSaleData(saleJSON);
         };
 
 
@@ -147,10 +154,6 @@
                 '</table>'+
                 '<br/><br/> <img src="../../../assets/img/footer.jpg" width="100%" height="100px" /> </div> </section> </html>');
             popupWinindow.document.close();
-        };
-
-        $scope.saveSaleData = function () {
-
         };
 
         $scope.loadCustomers=function() {
