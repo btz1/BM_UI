@@ -42,18 +42,21 @@
         </div>
 
         <div ng-show="!useExistingCustomer">
-            <br/><br/><br/>
-            <div class="col-md-12">
-                <div class="col-md-6"><b>Name:</b> <input type="text" ng-model="selectedCustomer.firstName" class="form-control" /></div>
-                <div class="col-md-6"><b>Email:</b> <input type="text" ng-model="selectedCustomer.email" class="form-control" /></div>
+            <br/><br/><br/><br/>
+            <div class="row col-md-12">
+                <div class="col-md-1"><b>Name:</b> </div>
+                    <div class="col-md-5"><input type="text" ng-model="selectedCustomer.firstName" class="form-control" /></div>
+                <div class="col-md-1"><b>Email:</b> </div>
+                   <div class="col-md-5"> <input type="text" ng-model="selectedCustomer.email" class="form-control" /></div>
             </div>
 
-            <br/><br/><br/>
-            <div>
-                <div class="col-md-6"><b>Phone Number:</b> <input type="number" ng-model="selectedCustomer.phoneNumber" class="form-control" /></div>
+            <br/><br/><br/><br/>
+            <div class="row col-md-12">
+                <div class="col-md-1"><b>Phone Number:</b> </div>
+                <div class="col-md-5"><input type="number" ng-model="selectedCustomer.phoneNumber" class="form-control" /></div>
             </div>
         </div>
-            <br/>
+            <br/><br/>
             <hr/>
 
         <table class="table">
@@ -114,16 +117,16 @@
             </div>
 
             <br/><br/><br/>
-            <div class="col-md-12">
+            <div class="row col-md-12" style="margin-left: 0px;">
                 <div class="col-md-2"><b>Deliver Date:</b></div>
-                <div class="col-xlg-6" ng-controller="datepickerpopupCtrl">
-                    <p class="col-md-4">
+                <div class="col-md-4" ng-controller="datepickerpopupCtrl">
+                    <div class="input-group col-md-4">
                         <input type="text" class="form-control" uib-datepicker-popup="dd.MM.yyyy" datepicker-options="options"
                                ng-model="selectedDate" ng-change="setSelectedDate()" is-open="opened" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" show-button-bar="false" />
                         <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
           </span>
-                    </p>
+                    </div>
                 </div>
             </div>
 
