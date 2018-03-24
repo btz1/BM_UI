@@ -1,0 +1,38 @@
+<div class="horizontal-scroll" ba-panel ba-panel-class="with-scroll">
+    <input type="text" ng-model="searchEmployee" placeholder="Search here" class="form-control">
+    <table class="table" >
+        <thead>
+        <tr class="sortable ">
+            <th>Employee ID</th>
+            <th>Employee Name</th>
+            <th>Mark Attendance</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="employee in employeeData | filter: searchEmployee">
+            <td>{{employee.id}}</td>
+            <td>{{employee.name}}</td>
+            <td><label class="switcher-container switcher">
+                <input type="checkbox" ng-model="switcherValue" ng-change="populateAttendanceData(employee.id,switcherValue)">
+                <div class="switcher success" ng-class="::switcherStyle">
+                    <div class="handle-container">
+                        <span class="handle handle-on">Present</span>
+                        <span class="handle"></span>
+                        <span class="handle handle-off">Absent</span>
+                    </div>
+                </div>
+            </label></td>
+        </tr>
+        </tbody>
+        <tfoot>
+        </tfoot>
+    </table>
+    <div class="form-group">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-warning"  ng-click="employeeAttendance()">Process All</button>
+        </div>
+    </div>
+
+
+</div>
