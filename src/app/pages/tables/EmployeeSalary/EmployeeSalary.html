@@ -1,0 +1,29 @@
+<div class="horizontal-scroll" ng-init="loadEmployeeSalaries()" ba-panel ba-panel-class="with-scroll">
+    <input type="text" ng-model="search" placeholder="Search here" class="form-control">
+
+    <table class="table" >
+        <thead>
+        <tr class="sortable ">
+            <th>Employee ID</th>
+            <th>Employee Name</th>
+            <th>Employee Salary</th>
+            <th>PayAbles </th>
+            <th>Salary Month </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="salaries in employeesSalaraies | filter: search">
+            <td>{{salaries.employeeId}}</td>
+            <td>{{salaries.employeeName}}</td>
+            <td>{{salaries.totalSalary}}</td>
+            <td>{{salaries.currentPayable}}</td>
+            <td>{{salaries.salaryMonth}}</td>
+
+        </tr>
+        </tbody>
+        <tfoot>
+        </tfoot>
+    </table>
+
+
+</div>
