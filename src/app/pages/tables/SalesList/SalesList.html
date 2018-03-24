@@ -12,7 +12,7 @@
     <th>Sales Advance Payment </th>
 </tr></table>
 <div ng-repeat="item in SalesData |filter :searchSales">
-    <table class="table table-width">
+    <table class="table table-width table-hover">
         <tr  data-toggle="collapse" data-target="{{'#'+item.salesId}}">
             <td >{{item.salesId}}</td>
             <td>{{item.saleDate}}</td>
@@ -22,10 +22,14 @@
             <td>{{item.advancePayment}}</td>
         </tr></table>
 
-        <table style=" border-top: 1px solid #abb1ba;" ><tr id="{{item.salesId}}" class="collapse " >
+        <table style=" border-top: 1px solid #abb1ba;" >
+            <tr id="{{item.salesId}}" class="collapse " >
            <td ba-panel>
-               <br/>
+               <div class="customer_main_callout bottom">
+                   <div  style="background-color: #d9d9d9;" >
+                       <br/>
                <h5 style="margin-left: 50px;">Customer Information:</h5>
+
                <table style="margin-left: 100px;">
                 <tr>
                     <th style="width: 200px"><b>Name:</b></th><td style="text-align: left;width: 400px;">{{item.customer.firstName + '' + item.customer.lastName}}</td>
@@ -40,6 +44,7 @@
                        <th style="width: 200px"><b>Balance:</b></th><td style="width: 400px">{{item.customer.balance}}</td>
                    </tr>
                </table>
+
                <br/><br/>
                <h5 style="margin-left: 50px;">Product Information:</h5>
             <div style="margin-left: 100px;">
@@ -74,7 +79,7 @@
                     <th style="width: 200px"><b>Cash Payment:</b></th><td style="text-align: left;width: 200px;">{{item.advancePayment}}</td>
                 </tr>
                </table>
-
+                   </div></div>
            </td>
         </tr>
     </table> </div>
