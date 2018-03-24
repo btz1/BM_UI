@@ -19,6 +19,7 @@
     'BlurAdmin.pages.AddSalesPayments',
     'BlurAdmin.pages.Attendance',
     'BlurAdmin.pages.AttendanceReport',
+    'BlurAdmin.pages.EmployeeSalary',
     // 'BlurAdmin.pages.listAllCustomers',
     'BlurAdmin.pages.ui',
     'BlurAdmin.pages.components',
