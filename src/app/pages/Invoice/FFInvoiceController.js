@@ -26,6 +26,7 @@
         $scope.advancePayment = "";
         $scope.deliverDate = "";
         $scope.cashAmount= false;
+        $scope.useExistingCustomer=true;
 
         $scope.getAllProducts = function () {
             var promise1 = productDataService.getAllProducts();
@@ -98,6 +99,9 @@
             salesDataService.saveSaleData(saleJSON);
         };
 
+        $scope.updateExistingCustomerFlag = function (updated) {
+            $scope.useExistingCustomer = updated;
+        };
 
         $scope.customer ="";
         $scope.product="";
