@@ -11,6 +11,17 @@
   opacity:1;
   transition: 2s;
 }
+.table-width{
+  width:100%;
+  table-layout:fixed;
+}
+.table-width tr td > div{
+  height:2em;
+  overflow-y:hidden;overflow-x:hidden;
+}
+.table-width tr td > div:hover{
+  height: 100%;
+}
 .horizontal-scroll {
   overflow-x: auto;
   overflow-y: visible;
@@ -22,7 +33,6 @@
   overflow-x: auto;
   overflow-y: auto;
 }
-
 .panel-subtitle {
   font-size: 15px;
   margin-bottom: 16px;
