@@ -9,7 +9,7 @@
         .controller('FFInvoiceController', FFInvoiceController);
 
     /** @ngInject */
-    function FFInvoiceController ($scope,$http,productDataService,customerDataService,$q,apiUrl)
+    function FFInvoiceController ($scope,$http,productDataService,customerDataService,$q,apiUrl,datePickerSharingService,salesDataService)
     {
 
         $scope.allProducts = [];
@@ -21,7 +21,12 @@
         $scope.customerCity = "";
         $scope.customerPhoneNumber ="";
         $scope.customerBalance = "";
-        $scope.selectedCustomer;
+        $scope.saleDataJSON={};
+        $scope.saleProducts=[];
+        $scope.advancePayment = "";
+        $scope.deliverDate = "";
+        $scope.cashAmount= false;
+        $scope.useExistingCustomer=true;
 
         $scope.getAllProducts = function () {
             var promise1 = productDataService.getAllProducts();
@@ -46,6 +51,12 @@
         $scope.populateSelectedProduct = function (selected,item) {
             item.selectedProduct = selected.urduName;
             item.price = selected.price;
+            var productDetail = {
+                quantity: item.qty,
+                salePrice: selected.price,
+                productModel: selected
+            };
+            $scope.saleProducts.push(productDetail);
         };
 
         $scope.populateSelectedCustomer = function (selected,item) {
@@ -59,14 +70,9 @@
         };
 
 
-
-        console.log($scope.invoice);
         $scope.add = function(){
             $scope.invoice.items.push({
                 productList: $scope.allProducts,
-                customerList:$scope.allCustomers,
-                selectedProduct:"",
-                selectedCustomer:"",
                 qty: 1,
                 price: ""
             });
@@ -80,6 +86,21 @@
                 total += item.qty * item.price;
             })
             return total;
+        };
+
+        $scope.saveSaleData = function (advancePayment,selectedCustomer) {
+            var saleJSON = {
+                totalAmount:$scope.total(),
+                deliverDate:datePickerSharingService.selectedDate,
+                advancePayment:advancePayment,
+                saleProductList:$scope.saleProducts,
+                customer:selectedCustomer
+            };
+            salesDataService.saveSaleData(saleJSON);
+        };
+
+        $scope.updateExistingCustomerFlag = function (updated) {
+            $scope.useExistingCustomer = updated;
         };
 
         $scope.customer ="";
@@ -137,10 +158,6 @@
                 '</table>'+
                 '<br/><br/> <img src="../../../assets/img/footer.jpg" width="100%" height="100px" /> </div> </section> </html>');
             popupWinindow.document.close();
-        };
-
-        $scope.saveSaleData = function () {
-
         };
 
         $scope.loadCustomers=function() {

@@ -2,31 +2,56 @@
 <div>
     <section class="row" ng-controller="FFInvoiceController" ba-panel ba-panel-class="with-scroll">
 
-
         <div class="col-md-12">
             <div class="col-md-2" style="margin-top: 10px;"><b>Select Customer:</b></div>
-            <div class="col-md-4"><select ng-model="selectedCustomer" ng-options="option.firstName for option in allCustomers"
-                                           class="form-control" ng-change="populateSelectedCustomer(selectedCustomer,item)">
+            <div class="col-md-4"><select ng-model="selectedCustomer" ng-disabled="!useExistingCustomer" ng-options="option.firstName for option in allCustomers"
+                                          class="form-control" ng-change="populateSelectedCustomer(selectedCustomer,item)">
                 <option value="">Select customer</option>
             </select></div>
+
+            <label class="switcher-container switcher">
+                <input type="checkbox" ng-model="useExistingCustomer" ng-change="updateExistingCustomerFlag(useExistingCustomer)">
+                <div class="switcher success" ng-class="::switcherStyle">
+                    <div class="handle-container">
+                        <span class="handle handle-on">OLD</span>
+                        <span class="handle"></span>
+                        <span class="handle handle-off">NEW</span>
+                    </div>
+                </div>
+            </label>
         </div>
 
-        <br/><br/><br/>
-        <div class="col-md-12">
-            <div class="col-md-6"><b>Name:</b> {{selectedCustomer.firstName}} {{selectedCustomer.lastName}}</div>
-            <div class="col-md-6"><b>Email:</b> {{selectedCustomer.email}}</div>
+        <div ng-show="useExistingCustomer">
+            <br/><br/><br/>
+            <div class="col-md-12">
+                <div class="col-md-6"><b>Name:</b> {{selectedCustomer.firstName}} {{selectedCustomer.lastName}}</div>
+                <div class="col-md-6"><b>Email:</b> {{selectedCustomer.email}}</div>
+            </div>
+
+            <br/><br/><br/>
+            <div class="col-md-12">
+                <div class="col-md-6"><b>Address:</b> {{selectedCustomer.address1}}</div>
+                <div class="col-md-6"><b>City:</b> {{selectedCustomer.city}}</div>
+            </div>
+
+            <br/><br/><br/>
+            <div>
+                <div class="col-md-6"><b>Phone Number:</b> {{selectedCustomer.phoneNumber}}</div>
+                <div class="col-md-6"><b>Balance:</b> {{selectedCustomer.balance}}</div>
+            </div>
         </div>
 
-        <br/><br/><br/>
-        <div class="col-md-12">
-            <div class="col-md-6"><b>Address:</b> {{selectedCustomer.address1}}</div>
-            <div class="col-md-6"><b>City:</b> {{selectedCustomer.city}}
-        </div>
+        <div ng-show="!useExistingCustomer">
+            <br/><br/><br/>
+            <div class="col-md-12">
+                <div class="col-md-6"><b>Name:</b> <input type="text" ng-model="selectedCustomer.firstName" class="form-control" /></div>
+                <div class="col-md-6"><b>Email:</b> <input type="text" ng-model="selectedCustomer.email" class="form-control" /></div>
+            </div>
 
-        <br/><br/><br/>
-        <div>
-            <div class="col-md-6"><b>Phone Number:</b> {{selectedCustomer.phoneNumber}}</div>
-            <div class="col-md-6"><b>Balance:</b> {{selectedCustomer.balance}}</div>
+            <br/><br/><br/>
+            <div>
+                <div class="col-md-6"><b>Phone Number:</b> <input type="number" ng-model="selectedCustomer.phoneNumber" class="form-control" /></div>
+            </div>
         </div>
             <br/>
             <hr/>
@@ -85,26 +110,32 @@
             <br/><br/><br/>
             <div class="col-md-12">
                 <div class="col-md-2"><b>Advance Payment:</b></div>
-                <div class="col-md-4"><input type="text" class="form-control"/></div>
+                <div class="col-md-4"><input type="text" ng-model="advancePayment" class="form-control"/></div>
             </div>
 
             <br/><br/><br/>
             <div class="col-md-12">
                 <div class="col-md-2"><b>Deliver Date:</b></div>
-                <div class="col-md-4"><input type="text" class="form-control"/></div>
+                <div class="col-xlg-6" ng-controller="datepickerpopupCtrl">
+                    <p class="col-md-4">
+                        <input type="text" class="form-control" uib-datepicker-popup="dd.MM.yyyy" datepicker-options="options"
+                               ng-model="selectedDate" ng-change="setSelectedDate()" is-open="opened" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" show-button-bar="false" />
+                        <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+                    </p>
+                </div>
             </div>
 
 
             <br/><br/><br/>
             <div class="col-md-12">
                 <div class="col-md-2"><b>Cash Payment:</b></div>
-                <div class="col-md-4"><label><input type="checkbox" checked></label></div>
+                <div class="col-md-4"><label><input type="checkbox" ng-model="cashAmount" checked></label></div>
             </div>
 
             <br/><br/><br/>
         <button type="button" ng-click="printInvoice('printSection1',selectedCustomer)" class="btn btn-primary">Print</button>&nbsp;&nbsp;&nbsp;
-        <button type="button" ng-click="saveSaleData()" class="btn btn-primary">Add Sale</button>
+        <button type="button" ng-click="saveSaleData(advancePayment,selectedCustomer)" class="btn btn-primary">Add Sale</button>
     </section>
-
-
 </div>

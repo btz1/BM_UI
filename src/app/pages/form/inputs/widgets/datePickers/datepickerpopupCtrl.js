@@ -9,7 +9,7 @@
         .controller('datepickerpopupCtrl', datepickerpopupCtrl);
 
     /** @ngInject */
-    function datepickerpopupCtrl($scope) {
+    function datepickerpopupCtrl($scope,datePickerSharingService) {
 
         $scope.open = open;
         $scope.opened = false;
@@ -18,9 +18,11 @@
         $scope.options = {
             showWeeks: false
         };
-
         function open() {
             $scope.opened = true;
         }
+        $scope.setSelectedDate = function () {
+            datePickerSharingService.selectedDate = $scope.selectedDate;
+        };
     }
 })();

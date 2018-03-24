@@ -9,22 +9,19 @@
         .controller('ListEmployeeController', ListEmployeeController);
 
     /** @ngInject */
-    function ListEmployeeController ($scope,$http,apiUrl)
+    function ListEmployeeController ($scope,$http,apiUrl,EmployeeDataService)
     {
 
         $scope.loadEmployees = function () {
 
-            $http({
-                url: apiUrl + "getAllEmployee",
-                method: "post",
-                headers: {
-                    "content-type": "application/json"
-                }
-            }).then(function (response) {
-                $scope.employeeData = response.data;
+            var promise = EmployeeDataService.loadEmployees();
+            promise.then(function (response) {
+                $scope.employeeData =response;
+            });
 
-            })
-        }
+        };
+        $scope.loadEmployees();
+
 
 
     }

@@ -9,24 +9,18 @@
         .controller('SalesListController', SalesListController);
 
     /** @ngInject */
-    function SalesListController ($scope,$http,apiUrl)
+    function SalesListController ($scope,$http,apiUrl,salesDataService)
     {
 
-        $scope.loadSalesData = function () {
+        $scope.loadSales = function () {
 
+            var promise = salesDataService.loadSalesData();
+            promise.then(function (response) {
+                $scope.SalesData =response;
+            });
 
-
-            $http({
-                url: apiUrl + "getAllSales",
-                method: "get",
-                headers: {
-                    "content-type": "application/json"
-                }
-            }).then(function (response) {
-                $scope.SalesData = response.data;
-
-            })
-        }
+        };
+        $scope.loadSales();
 
 
     }

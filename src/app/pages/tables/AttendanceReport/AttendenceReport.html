@@ -1,0 +1,26 @@
+<div class="horizontal-scroll" ng-init="loadEmployeeAttendance()" ba-panel ba-panel-class="with-scroll">
+    <input type="text" ng-model="search" placeholder="Search here" class="form-control">
+
+    <table class="table" >
+        <thead>
+        <tr class="sortable ">
+            <th>Employee ID</th>
+            <th>Employee Name</th>
+            <th>Date</th>
+            <th>Attendance </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="attendance in employeesAttendance | filter: search">
+            <td>{{attendance.employee.id}}</td>
+            <td>{{attendance.employee.name}}</td>
+            <td>{{attendance.date}}</td>
+            <td>{{attendance.present ? 'Present': 'Absent'}}</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        </tfoot>
+    </table>
+
+
+</div>
