@@ -1,52 +1,81 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <div class="horizontal-scroll" ng-init="loadSalesData()" ba-panel ba-panel-class="with-scroll">
     <input type="text" ng-model="searchSales" placeholder="Search here" class="form-control">
 
-    <!-- <div class="form-group select-page-size-wrap ">
-       <label>Rows on page
-         <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
-                 ng-model="smartTablePageSize" ng-options="i for i in [5,10,15,20,25]">
-         </select>
-       </label>
-     </div>-->
-    <table class="table" >
-        <thead>
-        <tr class="sortable ">
-            <th>Sales Id</th>
-            <th>Sales Date</th>
-            <th>Sales Delivered Date</th>
-            <th>Sales Total Amount </th>
-            <th>Sales Advance Payment </th>
-        </tr>
-         <!--<tr>
-              <th></th>
-              <th><input st-search="id" placeholder="Search Sale ID" class="input-sm form-control search-input"
-                         type="search"/></th>
-              <th><input st-search="name" placeholder="Search Customer Name" class="input-sm form-control search-input"
-                         type="search"/></th>
-              <th><input st-search="price" placeholder="Search Total Amount" class="input-sm form-control search-input"
-                         type="search"/></th>
-              <th><input st-search="productCode" placeholder="Search Advance Payment" class="input-sm form-control search-input" type="search"/>
-              </th>
-              <th><input st-search="unit" placeholder="Search Sale Date" class="input-sm form-control search-input" type="search"/>
-              </th>
-              <th><input st-search="updatedOn" placeholder="Search Delivery Date" class="input-sm form-control search-input" type="search"/>
-              </th>
-         </tr>-->
-        </thead>
-        <tbody>
-        <tr ng-repeat="item in SalesData |filter :searchSales">
-            <td>{{item.salesId}}</td>
+<table class="table"><tr>
+    <th>Sales Id</th>
+    <th>Sales Date</th>
+    <th>Sales Delivered Date</th>
+    <th>Sales Total Amount </th>
+    <th>Sales Advance Payment </th>
+</tr></table>
+<div ng-repeat="item in SalesData |filter :searchSales">
+    <table class="table table-hover">
+        <tr  data-toggle="collapse" data-target="{{'#'+item.salesId}}">
+            <td >{{item.salesId}}</td>
             <td>{{item.saleDate}}</td>
             <td>{{item.deliverDate}}</td>
             <!--<td><a class="email-link" ng-href="mailto:{{item.email}}">{{item.email}}</a></td>-->
             <td>{{item.totalAmount}}</td>
             <td>{{item.advancePayment}}</td>
+        </tr></table>
+        <table style="  border: 1px solid #abb1ba;margin-left: 20px;" class="table-collapse"><tr id="{{item.salesId}}" class="collapse " >
+           <td >
+               <br/>
+               <h5 style="margin-left: 50px;">Customer Information:</h5>
+               <table style="margin-left: 100px;">
+                <tr>
+                    <th style="width: 200px"><b>Name:</b></th><td style="text-align: left;width: 400px;">{{item.customer.firstName + '' + item.customer.lastName}}</td>
+                    <th style="width: 200px"><b>Email:</b></th><td style="width: 400px">{{item.customer.email}}</td>
+                </tr>
+                   <tr>
+                       <th style="width: 200px"><b>Address:</b></th><td style="text-align: left;width: 400px;">{{item.customer.address1}}</td>
+                       <th style="width: 200px"><b>City:</b></th><td style="width: 400px">{{item.customer.city}}</td>
+                   </tr>
+                   <tr>
+                       <th style="width: 200px"><b>Phone Number:</b></th><td style="text-align: left;width: 400px;">{{item.customer.phoneNumber}}</td>
+                       <th style="width: 200px"><b>Balance:</b></th><td style="width: 400px">{{item.customer.balance}}</td>
+                   </tr>
+               </table>
+               <br/><br/>
+               <h5 style="margin-left: 50px;">Product Information:</h5>
+            <div style="margin-left: 100px;">
+            <table><tr>
+                <th style="width: 200px"><b>Product</b></th>
+                <th style="width: 200px"><b>Actual Price</b></th>
+                <th style="width: 200px"><b>Sale Price</b></th>
+                <th style="width: 200px"><b>Quantity</b></th>
+                <th style="width: 200px"><b>Item Total</b></th>
 
+            </tr></table>
+                <table ng-repeat="itemDetail in item.saleProductList">
+                    <tr>
+                        <td style="text-align: left;width: 200px;">{{itemDetail.productModel.name}}</td>
+                        <td style="text-align: left;width: 200px;">{{itemDetail.productModel.price}}</td>
+                        <td style="text-align: left;width: 200px;">{{itemDetail.salePrice}}</td>
+                       <td style="text-align: left;width: 200px;">{{itemDetail.quantity}}</td>
+                        <td style="text-align: left;width: 200px;">{{itemDetail.quantity * itemDetail.salePrice}}</td>
+                    </tr>
+                </table>
+            </div>
+               <br/><br/>
+               <h5 style="margin-left: 50px;">Payment Information:</h5>
+            <table style="margin-left: 100px;">
+                   <tr>
+                       <th style="width: 200px"><b>Advance Payment:</b></th><td style="text-align: left;width: 200px;">{{item.advancePayment}}</td>
+                   </tr>
+                <tr>
+                    <th style="width: 200px"><b>Delivery Date:</b></th><td style="text-align: left;width: 200px;">{{item.deliverDate}}</td>
+                </tr>
+                <tr>
+                    <th style="width: 200px"><b>Cash Payment:</b></th><td style="text-align: left;width: 200px;">{{item.advancePayment}}</td>
+                </tr>
+               </table>
+               <br/>
+           </td>
         </tr>
-        </tbody>
-        <tfoot>
-        </tfoot>
-    </table>
-
+    </table> </div>
 
 </div>

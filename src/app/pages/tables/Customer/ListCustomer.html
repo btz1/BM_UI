@@ -1,13 +1,6 @@
 <div class="horizontal-scroll" ng-init="loadCustomers()" ba-panel ba-panel-class="with-scroll">
     <input type="text" ng-model="searchCustomer" placeholder="Search here" class="form-control">
 
-    <!-- <div class="form-group select-page-size-wrap ">
-       <label>Rows on page
-         <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
-                 ng-model="smartTablePageSize" ng-options="i for i in [5,10,15,20,25]">
-         </select>
-       </label>
-     </div>-->
     <table class="table" >
         <thead>
         <tr class="sortable ">
@@ -19,21 +12,6 @@
             <th>Customer City </th>
             <th>Customer Phone </th>
         </tr>
-        <!-- <tr>
-              <th></th>
-              <th><input st-search="id" placeholder="Search Sale ID" class="input-sm form-control search-input"
-                         type="search"/></th>
-              <th><input st-search="name" placeholder="Search Customer Name" class="input-sm form-control search-input"
-                         type="search"/></th>
-              <th><input st-search="price" placeholder="Search Total Amount" class="input-sm form-control search-input"
-                         type="search"/></th>
-              <th><input st-search="productCode" placeholder="Search Advance Payment" class="input-sm form-control search-input" type="search"/>
-              </th>
-              <th><input st-search="unit" placeholder="Search Sale Date" class="input-sm form-control search-input" type="search"/>
-              </th>
-              <th><input st-search="updatedOn" placeholder="Search Delivery Date" class="input-sm form-control search-input" type="search"/>
-              </th>
-         </tr>-->
         </thead>
         <tbody>
         <tr ng-repeat="item in customersData | filter: searchCustomer">
