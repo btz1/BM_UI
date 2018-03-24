@@ -6,10 +6,53 @@
 .full-width {
   margin: 0 -22px -16px;
 }
-
-.table-collapse{
-  opacity:1;
-  transition: 2s;
+.customer_callout {
+  background-color: white;
+  position: relative;
+  border-radius: 5px;
+  background-color: white;
+  border: 3px solid #d9d9d9;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset;
+  height: 100px;
+  width: 100%;
+}
+.customer_callout div{
+  height: 94px;
+  width: 100%;
+  overflow-y:scroll;overflow-x:hidden;
+}
+.customer_callout::before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  border: 0.8em solid transparent;
+  position: absolute;
+}
+.customer_callout.bottom::before {
+  left: 45%;
+  top: -22px;
+  border-bottom: 10px solid #d9d9d9;
+}
+.customer_main_callout {
+  background-color: white;
+  position: relative;
+  border-radius: 5px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset;
+}
+.customer_main_callout::before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  border: 0.8em solid transparent;
+  position: absolute;
+}
+.customer_main_callout div{
+  overflow-x:hidden;
+}
+.customer_main_callout.bottom::before {
+  left: 45%;
+  top: -20px;
+  border-bottom: 10px solid #d9d9d9;
 }
 .table-width{
   width:100%;

@@ -12,6 +12,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon-96x96.png">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
   <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
   <!-- bower:css -->
   <!-- run `gulp inject` to automatically populate bower styles dependencies -->
@@ -39,7 +43,50 @@
   </div>
 
   <footer class="al-footer clearfix">
-    <div class="al-footer-right">Developed By: <img src="../../../assets/img/btz.png" width="50px" height="30px" style="margin-bottom: 5px;"/> Solutions </div>
+    <div class="al-footer-right">
+      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModal">Developed By: <img src="../../../assets/img/logo.png" width="50px" height="30px" style="margin-bottom: 0px;"/></button>
+       <br/><br/></div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div align="center">
+            <img src="../../../assets/img/logo.png" height="120px" width="150px"/>
+            </div>
+          </div>
+          <div class="modal-body" >
+            <div align="center"><h3>Developers</h3></div><br/>
+            <div class="col-md-12">
+            <div class="col-md-4">
+            <div class="panel panel-default">
+              <div class="panel-heading" style="height: 100px">Panel with panel-default class</div>
+              <div class="panel-body">Panel Content</div>
+            </div></div>
+              <div class="col-md-4">
+                <div class="panel panel-default">
+                  <div class="panel-heading" style="height: 100px">Panel with panel-default class</div>
+                  <div class="panel-body">Panel Content</div>
+                </div></div>
+              <div class="col-md-4">
+                <div class="panel panel-default">
+                  <div class="panel-heading" style="height: 100px">Panel with panel-default class</div>
+                  <div class="panel-body">Panel Content</div>
+                </div></div>
+            </div>
+            </div>
+          <div align="center"><h3>Contact Us</h3></div><br/>
+          <div align="center">
+            <a href="https://www.facebook.com"><img src="../../../assets/img/facebook_icon.png"></a>&nbsp;
+            <a href="https://www.google.com"><img src="../../../assets/img/google_icon.png"></a>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="al-footer-main clearfix">
       <!--<div class="al-copy">Bussiness Management 2018</div>
       <ul class="al-share clearfix">

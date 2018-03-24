@@ -4,7 +4,7 @@
 <div class="horizontal-scroll" ng-init="loadCustomers()" ba-panel ba-panel-class="with-scroll">
     <input type="text" ng-model="searchCustomer" placeholder="Search here" class="form-control">
 
-    <table class="table table-width" >
+    <table class="table table-width " >
         <tr >
             <th>Customer ID</th>
             <th>Customer First Name</th>
@@ -16,9 +16,9 @@
         </tr>
     </table>
     <div ng-repeat="item in customersData | filter: searchCustomer">
-        <table class="table table-hover table-width">
-            <tr data-toggle="collapse" data-target="{{'#'+item.id}}">
-                <td>{{item.id}}</td>
+        <table class="table table-width table-hover">
+            <tr data-toggle="collapse" data-target="{{'#'+item.id}}" >
+                <td >{{item.id}}</td>
                 <td>{{item.firstName}}</td>
                 <td>{{item.lastName}}</td>
                 <!--<td><a class="email-link" ng-href="mailto:{{item.email}}">{{item.email}}</a></td>-->
@@ -29,10 +29,54 @@
 
             </tr>
         </table>
-        <table style="  border: 1px solid #abb1ba;margin-left: 20px;" >
-            <tr id="{{item.id}}" class="collapse " >
-                <td>new data</td>
+        <table style="  border-top: 1px solid #abb1ba;width: 100%;" >
+            <tr id="{{item.id}}" class="collapse ">
+                <td ba-panel>
+                    <div class="customer_main_callout bottom">
+                    <div  style="background-color: #d9d9d9;" >
+                    <br/>
+                    <h5 style="margin-left: 50px;">Account Details:</h5>
+                    <div style="margin-left: 100px;">
 
+                        <div ba-panel ng-repeat="itemDetail in item.ledgerEntries" style="width: 80%">
+                            <table class="table table-condensed ">
+                            <tr>
+                                <th  style="padding-left: 100px;"><b>Debit</b></th>
+                                <th style="padding-left: 100px;"><b>Credit</b></th>
+                                <th  style="padding-left: 100px;"><b>Date</b></th>
+
+                            </tr>
+                            <tr rowspan="2">
+                                <td style="text-align: left;padding-left: 100px;">{{itemDetail.debitAmount}}</td>
+                                <td style="text-align: left;padding-left: 100px;">{{itemDetail.creditAmount}}</td>
+                                <td style="text-align: left;padding-left: 100px;">{{itemDetail.date}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <div class="customer_callout bottom" style="width: 100%;margin-top: 12px" >
+                                            <div>lknlnlkn<br/>
+                                        lknlnlkn<br/>
+                                        lknlnlkn<br/>
+                                        lknlnlkn<br/>
+                                        lknlnlkn<br/>
+                                        lknlnlkn<br/>
+                                        lknlnlkn<br/></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
+
+                    </div>
+                    <table>
+                        <tr ba-panel>
+                            <th style="width: 200px"><b>Balance:</b></th><td style="text-align: left;width: 200px;">{{item.balance}}</td><br/>
+                        </tr>
+                    </table><br/>
+                    </div>
+                    </div>
+
+                    </div> </td>
             </tr>
         </table>
     </div>

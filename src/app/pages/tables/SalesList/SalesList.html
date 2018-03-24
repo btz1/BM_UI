@@ -12,7 +12,7 @@
     <th>Sales Advance Payment </th>
 </tr></table>
 <div ng-repeat="item in SalesData |filter :searchSales">
-    <table class="table table-hover table-width">
+    <table class="table table-width">
         <tr  data-toggle="collapse" data-target="{{'#'+item.salesId}}">
             <td >{{item.salesId}}</td>
             <td>{{item.saleDate}}</td>
@@ -21,8 +21,9 @@
             <td>{{item.totalAmount}}</td>
             <td>{{item.advancePayment}}</td>
         </tr></table>
-        <table style="  border: 1px solid #abb1ba;margin-left: 20px;" class="table-collapse"><tr id="{{item.salesId}}" class="collapse " >
-           <td>
+
+        <table style=" border-top: 1px solid #abb1ba;" ><tr id="{{item.salesId}}" class="collapse " >
+           <td ba-panel>
                <br/>
                <h5 style="margin-left: 50px;">Customer Information:</h5>
                <table style="margin-left: 100px;">
@@ -73,7 +74,7 @@
                     <th style="width: 200px"><b>Cash Payment:</b></th><td style="text-align: left;width: 200px;">{{item.advancePayment}}</td>
                 </tr>
                </table>
-               <br/>
+
            </td>
         </tr>
     </table> </div>

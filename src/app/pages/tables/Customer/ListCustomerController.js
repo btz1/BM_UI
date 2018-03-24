@@ -15,7 +15,7 @@
         $scope.loadCustomers = function () {
 
             $http({
-                url: apiUrl+ "getAllCustomers",
+                url: apiUrl+ "getAllCustomersSummary",
                 method: "get",
                 headers: {
                     "content-type": "application/json"
