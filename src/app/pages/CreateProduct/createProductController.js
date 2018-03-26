@@ -17,7 +17,7 @@
         $scope.specialPrice ="";
         $scope.unit="";
         $scope.createProductAction=function(){
-            if (true)
+            if ($scope.productCode !==""&& $scope.productName!=="" && $scope.productPrice!=="")
             {
                 var formData = {
                     "productCode":$scope.productCode,
@@ -36,17 +36,23 @@
                         "content-type": "application/json"
                     }
                 }).then(function (result) {
-                    if (result.status === 202) {
-                        console.log("Product created");
-                        $scope.resetForm();
+                    if (result.status === 202 || result.status=== 200) {
+                        notificationService.showCustomNotification("success","Product is created.","Success");
+                        $scope.productCode ="";
+                        $scope.productName="";
+                        $scope.productPrice="";
+                        $scope.specialPrice ="";
+                        $scope.unit="";
                     }
                     else {
-                        console.log("Duplicate Entry");
+                        notificationService.showCustomNotification("error","Error in creating Product.","Error");
                     }
                 });
             }
             else
-            { console.log("Plz fill all fields");
+            {
+                notificationService.showCustomNotification("warning","Plz fill all fields.","Warning");
+
             }
         }
 

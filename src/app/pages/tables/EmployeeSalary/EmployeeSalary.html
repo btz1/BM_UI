@@ -9,6 +9,8 @@
             <th>Employee Salary</th>
             <th>PayAbles </th>
             <th>Salary Month </th>
+            <th>Enter Amount</th>
+            <th>Salary Completed</th>
         </tr>
         </thead>
         <tbody>
@@ -18,12 +20,18 @@
             <td>{{salaries.totalSalary}}</td>
             <td>{{salaries.currentPayable}}</td>
             <td>{{salaries.salaryMonth}}</td>
-
+            <td><input type="text" class="form-control" ng-change="paySalary(salaries,salaryAmount)"
+                       ng-model="salaryAmount" style="width: 80px; margin-top: 5px" placeholder="PKR"></td>
+            <td> <label class="checkbox-inline custom-checkbox nowrap">
+                <input ng-model="fullSalary" ng-change="fullSalaryPay(salaries,fullSalary)" type="checkbox" id="closeButton">
+                <span>Close Salary</span>
+            </label></td>
         </tr>
         </tbody>
         <tfoot>
         </tfoot>
     </table>
+    <tr><button type="submit" class="btn btn-warning" ng-click="addAllSalaries()">Process All</button></tr>
 
 
 </div>

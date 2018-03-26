@@ -44,12 +44,18 @@
                     }
                 }).then(function (response) {
                     if (response.status === 200 || response.status === 202){
-                        console.log("Sales Amount Added Successfully")
+                        notificationService.showCustomNotification("success","Sales Amount Added Successfully.","Success");
+                        $scope.salesId = "";
+                        $scope.paidAmount = "";
+                        $scope.isCash = false;
+                    }else {
+                        notificationService.showCustomNotification("error","Error in Adding Sales Amount.","Error");
+
                     }
 
                 })
             }else {
-                console.log("Fill All Fields")
+                notificationService.showCustomNotification("warning","Plz Fill All Fields.","Warning");
             }
         }
 

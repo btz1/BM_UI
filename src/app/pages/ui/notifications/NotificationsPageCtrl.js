@@ -98,9 +98,6 @@
     $scope.openToast = function () {
       angular.extend(toastrConfig, $scope.options);
       openedToasts.push(toastr[$scope.options.type]($scope.options.msg, $scope.options.title));
-      var strOptions = {};
-      for (var o in  $scope.options) if (o != 'msg' && o != 'title')strOptions[o] = $scope.options[o];
-      $scope.optionsStr = "toastr." + $scope.options.type + "(\'" + $scope.options.msg + "\', \'" + $scope.options.title + "\', " + JSON.stringify(strOptions, null, 2) + ")";
     };
 
     $scope.$on('$destroy', function iVeBeenDismissed() {

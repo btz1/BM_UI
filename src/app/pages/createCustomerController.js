@@ -5,11 +5,11 @@
 (function () {
     'use strict';
 
-    angular.module('BlurAdmin')
+    angular.module('BlurAdmin.pages')
         .controller('createCustomerController', createCustomerInitiated);
 
     /** @ngInject */
-    function createCustomerInitiated($scope,$http,apiUrl)
+    function createCustomerInitiated($scope,$http,apiUrl,notificationService)
     {
         $scope.firstName = "";
         $scope.lastName ="";
@@ -19,7 +19,7 @@
         $scope.phone ="";
 
         $scope.createCustomerAction=function(){
-            if ($scope.firstName != "" && $scope.phone!="")
+            if ($scope.firstName !== "" && $scope.phone!="")
             {
                 var formData = {
                     "firstName":$scope.firstName,
@@ -39,17 +39,25 @@
                         "content-type": "application/json"
                     }
                 }).then(function (result) {
-                    if (result.status === 202) {
-                        console.log("Customer    created");
-                        $scope.resetForm();
+                    if (result.status === 202 || result.status === 200) {
+                        notificationService.showCustomNotification("success","Customer is created.","Success");
+                        $scope.firstName = "";
+                        $scope.lastName ="";
+                        $scope.email = "";
+                        $scope.address ="";
+                        $scope.city = "";
+                        $scope.phone ="";
+
                     }
                     else {
-                        console.log("Duplicate Entry");
+                        notificationService.showCustomNotification("error","Error in Creating Customer.","Error");
                     }
                 });
             }
             else
-            { console.log("Plz fill all fields");
+            {
+                notificationService.showCustomNotification("warning","Plz Fill All Fields.","Warning");
+
             }
         }
 

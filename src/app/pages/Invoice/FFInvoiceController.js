@@ -96,7 +96,18 @@
                 saleProductList:$scope.saleProducts,
                 customer:selectedCustomer
             };
-            salesDataService.saveSaleData(saleJSON);
+            var promise = salesDataService.saveSaleData(saleJSON);
+            promise.then(function (response) {
+                if (response.status === 200 || response.status === 202){
+                    notificationService.showCustomNotification("success","Sale Added Successfully.","Success");
+                        datePickerSharingService.selectedDate = "";
+                        advancePayment = "";
+                        $scope.saleProducts = "";
+                        selectedCustomer= "";
+                }else {
+                    notificationService.showCustomNotification("error","Error in Adding Sale.","Error");
+                }
+            });
         };
 
         $scope.updateExistingCustomerFlag = function (updated) {

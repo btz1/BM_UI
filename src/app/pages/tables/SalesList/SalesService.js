@@ -24,7 +24,7 @@
                     "content-type": "application/json"
                 }
             }).then(function(response) {
-                return response.data
+                return response
             });
         };
 

@@ -47,16 +47,26 @@
                         "content-type": "application/json"
                     }
                 }).then(function (result) {
-                    if (result.status === 202) {
-                        console.log("Employee created");
+                    if (result.status === 202 || result.status === 200) {
+                        notificationService.showCustomNotification("success","Employee is created.","Success");
+                        $scope.employeeName = "";
+                        $scope.daySalary = "";
+                        $scope.address ="";
+                        $scope.joiningDate= "";
+                        $scope.overTimeRate = "";
+                        $scope.monthlySalary ="";
+                        $scope.phone="";
+                        $scope.active ="";
                     }
                     else {
-                        console.log("Error In Employee creation");
+                        notificationService.showCustomNotification("error","Error in creating Employee.","Error");
                     }
                 });
             }
             else
-            { console.log("Plz fill all fields");
+            {
+                notificationService.showCustomNotification("warning","Plz fill all fields.","Warning");
+
             }
         }
 
