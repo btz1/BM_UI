@@ -43,8 +43,7 @@
     "wrench": "~1.5.8"
   },
   "scripts": {
-    "postinstall": "bower install",
-    "start": "gulp serve"
+    "postinstall": "bower install"
   },
   "dependencies": {
     "alertify.js": "^1.0.12",
