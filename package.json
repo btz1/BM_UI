@@ -43,8 +43,9 @@
     "wrench": "~1.5.8"
   },
   "scripts": {
-    "start": "node node_modules/gulp/bin/gulp serve:dist", 
-    "postinstall": "bower install"
+    "test": "gulp test",
+    "start": "gulp serve",
+    "postinstall": "./node_modules/bower/bin/bower install --config.interactive=false && gulp build"
   },
   "dependencies": {
     "alertify.js": "^1.0.12",
