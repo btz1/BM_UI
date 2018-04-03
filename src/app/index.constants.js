@@ -4,6 +4,6 @@
     angular
         .module('BlurAdmin')
 
-        .constant('apiUrl', "http://localhost:8080/");
+        .constant('apiUrl', "https://businessmanager-btz.herokuapp.com/");
 
 })();
