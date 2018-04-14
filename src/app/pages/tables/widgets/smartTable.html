@@ -1,12 +1,5 @@
 <div class="horizontal-scroll">
   <input type="text" ng-model="searchProduct" placeholder="Search here" class="form-control">
-  <!-- <div class="form-group select-page-size-wrap ">
-     <label>Rows on page
-       <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
-               ng-model="smartTablePageSize" ng-options="i for i in [5,10,15,20,25]">
-       </select>
-     </label>
-   </div>-->
   <table class="table" st-table="smartTableData">
     <thead>
     <tr class="sortable ">
@@ -18,19 +11,6 @@
       <th st-sort="updateOn">Delivery Date</th>
     </tr>
     <tr>
-     <!-- <th></th>
-      <th><input st-search="id" placeholder="Search Sale ID" class="input-sm form-control search-input"
-                 type="search"/></th>
-      <th><input st-search="name" placeholder="Search Customer Name" class="input-sm form-control search-input"
-                 type="search"/></th>
-      <th><input st-search="price" placeholder="Search Total Amount" class="input-sm form-control search-input"
-                 type="search"/></th>
-      <th><input st-search="productCode" placeholder="Search Advance Payment" class="input-sm form-control search-input" type="search"/>
-      </th>
-      <th><input st-search="unit" placeholder="Search Sale Date" class="input-sm form-control search-input" type="search"/>
-      </th>
-      <th><input st-search="updatedOn" placeholder="Search Delivery Date" class="input-sm form-control search-input" type="search"/>
-      </th>-->
     </tr>
     </thead>
     <tbody>
@@ -43,7 +23,6 @@
       <td>{{item.productCode}}</td>
       <td>{{item.unit}}</td>
       <td>{{item.updatedOn}}</td>
-
     </tr>
     </tbody>
     <tfoot>
@@ -54,23 +33,9 @@
     </tr>
     </tfoot>
   </table>
-</div>
-
-<div class="row-fluid" >
-  <!--<div class="accordion-toggle" data-toggle="collapse" data-target="#collapseThree">
-    <div class="span1">1</div>
-    <div class="span3">Mark</div>
-    <div class="span3">Otto</div>
-    <div class="span3">@mdo</div>
-  </div>-->
-  <div class="span1">
-    <button type="button" class="btn btn-primary"><i class="icon-search icon-white"></i></button></div>
-</div>
-<div id="collapseThree" class="row-fluid collapse in">
-  <div class="span1"></div>
-  <div class="span9">
-    Details 1
-    Details 2
-    Details 3
-  </div>
+  <p class="text-center text-muted" if-loading>
+    <span class="fa fa-spinner fa-spin fa-3x"></span>
+    <br /><br />
+    Loading, please wait...
+  </p>
 </div>

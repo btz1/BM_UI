@@ -1,6 +1,3 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 <div class="horizontal-scroll" ng-init="loadCustomers()" ba-panel ba-panel-class="with-scroll">
     <input type="text" ng-model="searchCustomer" placeholder="Search here" class="form-control">
 
@@ -46,7 +43,7 @@
                                 <th  style="padding-left: 100px;"><b>Date</b></th>
 
                             </tr>
-                            <tr rowspan="2">
+                            <tr >
                                 <td style="text-align: left;padding-left: 100px;">{{itemDetail.debitAmount}}</td>
                                 <td style="text-align: left;padding-left: 100px;">{{itemDetail.creditAmount}}</td>
                                 <td style="text-align: left;padding-left: 100px;">{{itemDetail.date}}</td>
@@ -54,13 +51,23 @@
                             <tr>
                                 <td colspan="3">
                                     <div class="customer_callout bottom" style="width: 100%;margin-top: 12px" >
-                                            <div>lknlnlkn<br/>
-                                        lknlnlkn<br/>
-                                        lknlnlkn<br/>
-                                        lknlnlkn<br/>
-                                        lknlnlkn<br/>
-                                        lknlnlkn<br/>
-                                        lknlnlkn<br/></div>
+                                            <div>
+                                                <table class="table table-condensed ">
+                                                    <tr>
+                                                        <th rowspan="20" ><div style="margin-top: 40px;">Sales Data: <span class="glyphicon glyphicon-triangle-right"></span> </div></th>
+                                                        <th  style="padding-left: 100px;"><b>Debit</b></th>
+                                                        <th style="padding-left: 100px;"><b>Credit</b></th>
+                                                        <th  style="padding-left: 100px;"><b>Date</b></th>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: left;padding-left: 100px;">{{itemDetail.debitAmount}}</td>
+                                                        <td style="text-align: left;padding-left: 100px;">{{itemDetail.creditAmount}}</td>
+                                                        <td style="text-align: left;padding-left: 100px;">{{itemDetail.date}}</td>
+                                                    </tr>
+
+                                                </table>
+                                            </div>
                                     </div>
                                 </td>
                             </tr>
@@ -80,4 +87,9 @@
             </tr>
         </table>
     </div>
+    <p class="text-center text-muted" if-loading>
+        <span class="fa fa-spinner fa-spin fa-3x"></span>
+        <br /><br />
+        Loading, please wait...
+    </p>
 </div>
