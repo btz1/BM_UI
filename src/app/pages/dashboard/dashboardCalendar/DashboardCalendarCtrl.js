@@ -9,7 +9,7 @@
       .controller('DashboardCalendarCtrl', DashboardCalendarCtrl);
 
   /** @ngInject */
-  function DashboardCalendarCtrl(baConfig) {
+  function DashboardCalendarCtrl($scope, baConfig,$http, dashBoardService) {
     var dashboardColors = baConfig.colors.dashboard;
     var $element = $('#calendar').fullCalendar({
       //height: 335,
@@ -60,5 +60,16 @@
         }
       ]
     });
+
+      $scope.loadSalesDeadlines = function () {
+
+          var salesDeadlinesPromise = dashBoardService.getSalesDeadlinesData();
+
+          salesDeadlinesPromise.then(function (response) {
+              $scope.deadLineSalesList = response;
+          });
+
+      }
+      $scope.loadSalesDeadlines();
   }
 })();

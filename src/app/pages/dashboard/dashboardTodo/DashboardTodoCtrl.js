@@ -11,6 +11,8 @@
   /** @ngInject */
   function DashboardTodoCtrl($scope, baConfig,$http, dashBoardService) {
 
+      $scope.deadLineSalesList = [];
+
     $scope.transparent = baConfig.theme.blur;
     var dashboardColors = baConfig.colors.dashboard;
     var colors = [];
@@ -81,5 +83,6 @@
               $scope.newTodoText = '';*/
       };
       $scope.loadList();
+
   }
 })();

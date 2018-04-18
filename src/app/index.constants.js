@@ -4,6 +4,6 @@
     angular
         .module('BlurAdmin')
 
-        .constant('apiUrl', "http://localhost:8080/");
+        .constant('apiUrl', "http://192.168.43.161:8080/");
 
 })();

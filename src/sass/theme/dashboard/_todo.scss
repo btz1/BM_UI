@@ -14,7 +14,7 @@ ul.todo-list {
     position: relative;
     border: 1px solid $input-border;
     cursor: grab;
-    height: 42px;
+    min-height: 42px;
     i.remove-todo {
       position: absolute;
       cursor: pointer;
@@ -131,7 +131,7 @@ label.todo-checkbox {
       font-weight: $font-light;
 
       .blur-container{
-        height: 40px;
+        min-height: 40px;
         position: absolute;
         width: calc(100% + 40px);;
         top: 0;

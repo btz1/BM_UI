@@ -37,7 +37,7 @@
 
       };
 
-      $scope.populatePieChart = function () {
+      /*$scope.populatePieChart = function () {
           var pieColor = baUtil.hexToRGB(baConfig.colors.defaultText, 0.2);
           console.log($scope.statTest);
           $scope.charts = [{
@@ -60,7 +60,7 @@
               stats: $scope.statTest.returnedCount,
           }
           ];
-      };
+      };*/
 
 
    /* function getRandomArbitrary(min, max) {

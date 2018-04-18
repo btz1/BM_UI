@@ -1,1 +1,15 @@
-<div id='calendar' class="blurCalendar"></div>
+<div class="task-todo-container" ng-init="loadSalesDeadlines()">
+    <div class="box-shadow-border"></div>
+    <ul class="todo-list">
+        <li ng-repeat="item in deadLineSalesList">
+            <label class="todo-checkbox custom-checkbox custom-input-success">
+                <span ><b>Sale ID:</b>&emsp;{{item.saleId}}</span><br/>
+                <span ><b>Customer:</b>&emsp;{{item.customer}}</span><br/>
+                <span ><b>Contact:</b>&emsp;{{item.contact}}</span><br/>
+                <span ><b>Total Amount:</b>&emsp;{{item.orderTotal}}</span><br/>
+                <span ><b>Paid:</b>&emsp;{{item.paid}}</span><br/>
+                <span ><b>Remaining:</b>&emsp;{{item.remaining}}</span>
+            </label>
+        </li>
+    </ul>
+</div>

@@ -22,9 +22,24 @@
                 return response.data;
             });
         };
+
+        var getSalesDeadlinesData = function () {
+
+            return $http({
+                url: apiUrl+"getSalesDeadlines",
+                method: "GET",
+                headers: {
+                    "content-type": "application/json"
+                }
+            }).then(function(response){
+                return response.data;
+            });
+
+        };
         return {
             getStats: getStats,
-            getToDoList:getToDoList
+            getToDoList:getToDoList,
+            getSalesDeadlinesData:getSalesDeadlinesData
         };
     };
 
