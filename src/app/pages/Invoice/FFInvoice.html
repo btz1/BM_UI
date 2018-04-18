@@ -5,7 +5,7 @@
     Loading, please wait...
 </p>
 <div>
-    <section class="row" ng-controller="FFInvoiceController" ba-panel ba-panel-class="with-scroll">
+    <section class="row" ba-panel ba-panel-class="with-scroll">
 
         <div class="col-md-12">
             <div class="col-md-2" style="margin-top: 10px;"><b>Select Customer:</b></div>
@@ -78,7 +78,7 @@
             <tr ng-repeat="item in invoice.items">
 
                 <td>
-                    <select ng-model="selectedProduct" ng-options="option.urduName for option in item.productList" class="form-control"
+                    <select ng-model="selectedProduct" ng-options="option.name for option in item.productList" class="form-control"
                             ng-change="populateSelectedProduct(selectedProduct,item)">
                         <option value="">Select product</option>
                     </select>
@@ -143,7 +143,8 @@
             </div>
 
             <br/><br/><br/>
-        <button type="button" ng-click="printInvoice('printSection1',selectedCustomer)" class="btn btn-primary">Print</button>&nbsp;&nbsp;&nbsp;
+        <button type="button" ng-click="printInvoice('printSection1',selectedCustomer,advancePayment)" class="btn btn-primary">Print</button>&nbsp;&nbsp;&nbsp;
         <button type="button" ng-click="saveSaleData(advancePayment,selectedCustomer)" class="btn btn-primary">Add Sale</button>
+        <div ng-controller="datepickerpopupCtrl"><span ng-if="clearDate">{{clearDateField()}}</span></div>
     </section>
 </div>

@@ -24,5 +24,9 @@
         $scope.setSelectedDate = function () {
             datePickerSharingService.selectedDate = $scope.selectedDate;
         };
+
+        $scope.clearDateField = function () {
+            $scope.selectedDate = undefined;
+        };
     }
 })();

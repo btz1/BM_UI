@@ -9,7 +9,7 @@
         .controller('createEmployeeController', createEmployeeInitiated);
 
     /** @ngInject */
-    function createEmployeeInitiated($scope,$http,apiUrl)
+    function createEmployeeInitiated($scope,$http,apiUrl,notificationService)
     {
         $scope.employeeName = "";
         $scope.daySalary = "";

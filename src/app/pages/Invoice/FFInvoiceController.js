@@ -9,7 +9,7 @@
         .controller('FFInvoiceController', FFInvoiceController);
 
     /** @ngInject */
-    function FFInvoiceController ($scope,$http,productDataService,customerDataService,$q,apiUrl,datePickerSharingService,salesDataService)
+    function FFInvoiceController ($scope,$http,productDataService,customerDataService,$q,apiUrl,datePickerSharingService,salesDataService,notificationService)
     {
 
         $scope.allProducts = [];
@@ -23,8 +23,7 @@
         $scope.customerBalance = "";
         $scope.saleDataJSON={};
         $scope.saleProducts=[];
-        $scope.advancePayment = "";
-        $scope.deliverDate = "";
+        $scope.clearDate = false;
         $scope.cashAmount= false;
         $scope.useExistingCustomer=true;
 
@@ -49,7 +48,7 @@
         $scope.getAllProducts();
 
         $scope.populateSelectedProduct = function (selected,item) {
-            item.selectedProduct = selected.urduName;
+            item.selectedProduct = selected.name;
             item.price = selected.price;
             var productDetail = {
                 quantity: item.qty,
@@ -82,9 +81,11 @@
         },
         $scope.total = function(){
             var total = 0;
-            angular.forEach($scope.invoice.items, function(item){
-                total += item.qty * item.price;
-            })
+            if($scope.invoice !== undefined){
+                angular.forEach($scope.invoice.items, function(item){
+                    total += item.qty * item.price;
+                })
+            }
             return total;
         };
 
@@ -92,7 +93,7 @@
             var saleJSON = {
                 totalAmount:$scope.total(),
                 deliverDate:datePickerSharingService.selectedDate,
-                advancePayment:advancePayment,
+                advancePayment:$scope.advancePayment,
                 saleProductList:$scope.saleProducts,
                 customer:selectedCustomer
             };
@@ -100,10 +101,10 @@
             promise.then(function (response) {
                 if (response.status === 200 || response.status === 202){
                     notificationService.showCustomNotification("success","Sale Added Successfully.","Success");
-                        datePickerSharingService.selectedDate = "";
-                        advancePayment = "";
-                        $scope.saleProducts = "";
-                        selectedCustomer= "";
+                    $scope.advancePayment = undefined;
+                    $scope.selectedDate = undefined;
+                    $scope.clearDate = true;
+                    $scope.getAllProducts();
                 }else {
                     notificationService.showCustomNotification("error","Error in Adding Sale.","Error");
                 }
@@ -121,7 +122,7 @@
         $scope.itemTotal="";
 
 
-        $scope.printInvoice = function(printSectionId,selectedCustomer) {
+        $scope.printInvoice = function(printSectionId,selectedCustomer,advancePayment) {
             var innerContents = document.getElementById(printSectionId).innerHTML;
             var innerContents1 = document.getElementById("printSection2").innerHTML;
             var popupWinindow = window.open('', '_blank', 'width=4000,height=4000,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
@@ -161,29 +162,12 @@
 
                 '<table>' +
                 '<tr><th style="width:14em;text-align: left">Advance Payment:</th>' +
-                '<td style="width:13em;text-align: left"></td></tr>' +
+                '<td style="width:13em;text-align: left">'+advancePayment+'</td></tr>' +
                 '<tr><th style="width:14em;text-align: left">Deliver Date:</th>' +
-                '<td style="width:13em;text-align: left"></td></tr>' +
-                '<tr><th style="width:14em;text-align: left">Cash Payment:</th>' +
-                '<td style="width:13em;text-align: left"></td></tr>' +
+                '<td style="width:13em;text-align: left">'+datePickerSharingService.selectedDate.toDateString()+'</td></tr>' +
                 '</table>'+
                 '<br/><br/> <img src="../../../assets/img/footer.jpg" width="100%" height="100px" /> </div> </section> </html>');
             popupWinindow.document.close();
-        };
-
-        $scope.loadCustomers=function() {
-                $http({
-                    url: apiUrl + "getAllCustomers",
-                    method: "get",
-                    headers: {
-                        "content-type": "application/json"
-                    }
-                }).then(function (response) {
-                    $scope.customer = response.data
-
-
-                })
-
         };
 
     }
