@@ -3,6 +3,7 @@
 
 <table class="table table-width"><tr>
     <th>Sales Id</th>
+    <th>Customer</th>
     <th>Sales Date</th>
     <th>Sales Delivered Date</th>
     <th>Sales Total Amount </th>
@@ -12,6 +13,7 @@
     <table class="table table-width table-hover">
         <tr  data-toggle="collapse" data-target="{{'#'+item.salesId}}">
             <td >{{item.salesId}}</td>
+            <td>{{item.customer.firstName + '' + item.customer.lastName}}</td>
             <td>{{printConvertedDate(item.saleDate)}}</td>
             <td>{{printConvertedDate(item.deliverDate)}}</td>
             <!--<td><a class="email-link" ng-href="mailto:{{item.email}}">{{item.email}}</a></td>-->
