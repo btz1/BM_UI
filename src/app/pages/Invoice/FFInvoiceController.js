@@ -81,11 +81,9 @@
         },
         $scope.total = function(){
             var total = 0;
-            if($scope.invoice !== undefined){
-                angular.forEach($scope.invoice.items, function(item){
-                    total += item.qty * item.price;
-                })
-            }
+            angular.forEach($scope.invoice.items, function(item){
+                total += item.qty * item.price;
+            })
             return total;
         };
 
@@ -93,7 +91,7 @@
             var saleJSON = {
                 totalAmount:$scope.total(),
                 deliverDate:datePickerSharingService.selectedDate,
-                advancePayment:$scope.advancePayment,
+                advancePayment:advancePayment,
                 saleProductList:$scope.saleProducts,
                 customer:selectedCustomer
             };

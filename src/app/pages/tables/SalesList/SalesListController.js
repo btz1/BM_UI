@@ -9,7 +9,7 @@
         .controller('SalesListController', SalesListController);
 
     /** @ngInject */
-    function SalesListController ($scope,$http,apiUrl,salesDataService)
+    function SalesListController ($scope,$http,apiUrl,salesDataService,datePickerSharingService)
     {
 
         $scope.loadSales = function () {
@@ -21,6 +21,11 @@
 
         };
         $scope.loadSales();
+
+
+        $scope.printConvertedDate = function (timestamp) {
+            return datePickerSharingService.convertTimeStampToDate(timestamp);
+        }
 
 
     }

@@ -12,8 +12,8 @@
     <table class="table table-width table-hover">
         <tr  data-toggle="collapse" data-target="{{'#'+item.salesId}}">
             <td >{{item.salesId}}</td>
-            <td>{{item.saleDate}}</td>
-            <td>{{item.deliverDate}}</td>
+            <td>{{printConvertedDate(item.saleDate)}}</td>
+            <td>{{printConvertedDate(item.deliverDate)}}</td>
             <!--<td><a class="email-link" ng-href="mailto:{{item.email}}">{{item.email}}</a></td>-->
             <td>{{item.totalAmount}}</td>
             <td>{{item.advancePayment}}</td>
@@ -73,7 +73,7 @@
                        <th style="width: 200px"><b>Advance Payment:</b></th><td style="text-align: left;width: 200px;">{{item.advancePayment}}</td>
                    </tr>
                 <tr>
-                    <th style="width: 200px"><b>Delivery Date:</b></th><td style="text-align: left;width: 200px;">{{item.deliverDate}}</td>
+                    <th style="width: 200px"><b>Delivery Date:</b></th><td style="text-align: left;width: 200px;">{{printConvertedDate(item.deliverDate)}}</td>
                 </tr>
                 <tr>
                     <th style="width: 200px"><b>Cash Payment:</b></th><td style="text-align: left;width: 200px;">{{item.advancePayment}}</td>
